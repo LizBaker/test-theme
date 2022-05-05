@@ -92,7 +92,7 @@ const Collapser = ({ title, id, defaultOpen, children }) => {
 
           &:hover,
           &:focus {
-            background: var(--color-neutrals-100);
+            background: var(--primary-hover-color);
             outline: none;
 
             .dark-mode & {

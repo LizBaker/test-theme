@@ -26,7 +26,7 @@ import SplitTextButton from './SplitTextButton';
 import useInstrumentedHandler from '../hooks/useInstrumentedHandler';
 
 const action = css`
-  color: var(--secondary-text-color);
+  color: var(--system-text-primary-dark);
   transition: all 0.2s ease-out;
 
   &:hover {
@@ -208,15 +208,11 @@ const GlobalHeader = ({ className, activeSite }) => {
         data-swiftype-index={false}
         className={className}
         css={css`
-          background-color: var(--color-neutrals-800);
+          background-color: var(--system-text-primary-light);
           box-shadow: var(--shadow-2);
           position: sticky;
           top: 0;
           z-index: 80;
-
-          .dark-mode & {
-            background-color: var(--color-dark-300);
-          }
         `}
       >
         <div
@@ -291,7 +287,7 @@ const GlobalHeader = ({ className, activeSite }) => {
                 size="104px"
                 css={css`
                   .logo-text {
-                    fill: var(--color-neutrals-050);
+                    fill: var(--system-text-primary-dark);
                   }
                 `}
               />
@@ -422,14 +418,8 @@ const GlobalHeader = ({ className, activeSite }) => {
 
                   input {
                     --hover-border-color: var(--color-neutrals-600);
-                    --background-color: var(--color-neutrals-700);
-                    background: var(--background-color);
                     border: none;
                     height: 40px;
-
-                    .dark-mode & {
-                      --background-color: var(--color-dark-500);
-                    }
 
                     &:hover {
                       box-shadow: 0 0 0 1px var(--color-neutrals-600);
@@ -437,7 +427,7 @@ const GlobalHeader = ({ className, activeSite }) => {
                   }
 
                   .search-hotkey {
-                    background: var(--color-neutrals-700);
+                    background: var(--color-white);
                     border-color: var(--color-neutrals-600);
                     border-radius: 0.125rem;
                     font-size: 0.875rem;
@@ -470,17 +460,12 @@ const GlobalHeader = ({ className, activeSite }) => {
                     size={Button.SIZE.SMALL}
                     variant={Button.VARIANT.LINK}
                     css={css`
-                      --active-color: none;
                       margin: 0;
                       height: 72px;
                       border-radius: 0px;
                       font-size: 0.75rem;
-                      color: var(--color-neutrals-100);
+                      color: var(--system-text-primary-dark);
                       background: transparent;
-
-                      .dark-mode & {
-                        --active-color: var(--color-dark-100);
-                      }
 
                       &:hover {
                         color: var(--color-neutrals-600);
@@ -536,13 +521,10 @@ const GlobalHeader = ({ className, activeSite }) => {
                 variant={Button.VARIANT.LINK}
                 href="https://one.newrelic.com"
                 css={css`
-                  margin: 0 0.625rem;
-                  font-weight: 600;
-                  font-size: 0.875rem;
                   white-space: nowrap;
-                  color: var(--color-brand-400);
-                  border: 1px solid var(--color-brand-400);
-                  border-radius: 4px;
+                  span {
+                    color: var(--system-text-primary-dark);
+                  }
 
                   @media screen and (max-width: ${MOBILE_BREAKPOINT}) {
                     display: none;
@@ -563,10 +545,8 @@ const GlobalHeader = ({ className, activeSite }) => {
             >
               <SplitTextButton
                 css={css`
-                  button {
-                    background: var(color-brand-500);
-                    border: 1px solid var(color-brand-500);
-                    border-radius: 4px;
+                  span {
+                    color: var(--brand-button-primary-accent);
                   }
                 `}
               />

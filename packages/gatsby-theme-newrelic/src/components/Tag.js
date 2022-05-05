@@ -9,7 +9,7 @@ const isInteractive = ({ as, interactive }) =>
 
 const Tag = styled.span`
   color: var(--color-neutrals-700);
-  background: var(--color-neutrals-100);
+  background: var(--primary-hover-color);
   padding: 0.125rem 0.5rem;
   border-radius: 0.25rem;
   font-size: 0.75rem;
@@ -19,7 +19,7 @@ const Tag = styled.span`
 
   .dark-mode & {
     color: var(--color-dark-700);
-    background: var(--color-dark-200);
+    background: var(--primary-hover-color);
   }
 
   ${(props) =>

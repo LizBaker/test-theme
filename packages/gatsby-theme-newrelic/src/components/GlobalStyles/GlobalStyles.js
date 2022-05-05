@@ -41,10 +41,6 @@ const GlobalStyles = ({ layout }) => (
         cursor: pointer;
         color: var(--link-color);
         transition: 0.2s ease-out;
-
-        &:hover {
-          color: var(--link-hover-color);
-        }
       }
 
       p {

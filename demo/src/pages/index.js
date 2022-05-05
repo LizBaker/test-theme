@@ -162,16 +162,21 @@ const IndexPage = () => {
           <Callout variant={Callout.VARIANT.CAUTION}>
             Danger! Exercise extreme caution.
           </Callout>
+          <br />
           <Callout variant={Callout.VARIANT.IMPORTANT}>
             Important! I said, this is important.
           </Callout>
+          <br />
           <Callout variant={Callout.VARIANT.TIP}>Here's a tip.</Callout>
+          <br />
           <Callout variant={Callout.VARIANT.TIP} title="Hello">
             Here's a tip with a custom title
           </Callout>
+          <br />
           <Callout variant={Callout.VARIANT.TIP} title={null}>
             Here's a tip with no title
           </Callout>
+          <br />
           <Callout variant={Callout.VARIANT.COURSE}>
             This callout is for a guide that is part of a super cool course
           </Callout>
@@ -350,7 +355,10 @@ nr1 create --type nerdpack --name pageviews-app
               grid-gap: 2rem;
               padding: 1rem;
               border-radius: 4px;
-              background: var(--secondary-background-color);
+              background: var(--primary-hover-color);
+              .dark-mode & {
+                background: var(--primary-contrast-color);
+              }
             `}
           >
             <Surface

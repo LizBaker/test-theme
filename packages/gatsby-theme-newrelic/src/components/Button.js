@@ -29,12 +29,11 @@ const styles = {
   },
   variant: {
     [VARIANTS.PRIMARY]: css`
-      color: var(--color-white);
-      background-color: var(--color-brand-600);
+      color: var(--color-black);
+      background-color: var(--brand-button-primary-accent);
 
       &:hover {
-        color: var(--color-white);
-        background-color: var(--color-brand-500);
+        background-color: var(--brand-button-primary-accent-hover);
       }
     `,
     [VARIANTS.LINK]: css`
@@ -46,59 +45,33 @@ const styles = {
       }
     `,
     [VARIANTS.NORMAL]: css`
-      color: var(--color-neutrals-700);
-      background-color: var(--color-neutrals-100);
+      color: var(--button-text-color);
+      background-color: var(--button-background-color);
 
       &:hover {
-        color: var(--color-brand-600);
-        background: ${rgba('#70ccd2', 0.17)};
-      }
-
-      .dark-mode & {
-        color: var(--color-dark-700);
-        background-color: var(--color-dark-200);
-
-        &:hover {
-          color: var(--color-brand-200);
-          background-color: ${rgba('#70ccd2', 0.17)};
+        background: var(--color-black);
+        .dark-mode & {
+          background: #d0d6d7;
         }
       }
     `,
     [VARIANTS.PLAIN]: css`
-      color: var(--color-neutrals-700);
+      color: var(--button-outline-color);
       background: transparent;
 
       &:hover {
         color: var(--color-brand-600);
         background: ${rgba('#70ccd2', 0.17)};
       }
-
-      .dark-mode & {
-        color: var(--color-dark-700);
-
-        &:hover {
-          color: var(--color-brand-200);
-          background-color: ${rgba('#70ccd2', 0.17)};
-        }
-      }
     `,
     [VARIANTS.OUTLINE]: css`
-      color: var(--color-neutrals-700);
-      border: 1px solid var(--border-color);
+      color: var(--button-outline-color);
+      border: 1px solid var(--button-outline-color);
       background-color: transparent;
 
       &:hover {
         color: var(--color-brand-600);
         border-color: var(--color-brand-500);
-      }
-
-      .dark-mode & {
-        color: var(--color-dark-700);
-
-        &:hover {
-          color: var(--color-brand-200);
-          border-color: ${rgba('#70ccd2', 0.17)};
-        }
       }
     `,
   },
@@ -114,7 +87,7 @@ const Button = styled.button`
   justify-content: center;
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 400;
   border-radius: 3px;
   font-family: var(--primary-font-family);
   line-height: 1;

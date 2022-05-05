@@ -115,12 +115,8 @@ const CodeBlock = ({
       <div className={className}>
         <div
           css={css`
-            background: var(--color-nord-0);
+            background: #212c31;
             border-radius: 4px;
-
-            .light-mode & {
-              background: var(--color-nord-6);
-            }
 
             ${preview &&
             css`
@@ -166,11 +162,6 @@ const CodeBlock = ({
                 border-bottom-right-radius: 4px;
                 padding: 0 1rem;
                 font-size: 0.75rem;
-
-                .light-mode & {
-                  color: var(--color-nord-0);
-                  background: var(--color-nord-4);
-                }
               `}
             >
               <div

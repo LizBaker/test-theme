@@ -34,10 +34,10 @@ const styles = {
       background: var(--callout-tip-background-color);
     `,
     [`${VARIANTS.COURSE}-title`]: css`
-      color: var(--color-brand-400);
+      color: var(--color-blue-400);
     `,
     [VARIANTS.COURSE]: css`
-      border-color: var(--color-brand-400);
+      border-color: var(--color-blue-400);
       background: var(--callout-course-background-color);
     `,
   },

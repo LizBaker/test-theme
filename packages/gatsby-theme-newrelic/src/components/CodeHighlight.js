@@ -47,10 +47,6 @@ const CodeHighlight = ({
                   grid-gap: 1rem;
                 }
               `};
-
-              .light-mode & {
-                color: var(--color-nord-0);
-              }
             `}
             className={className}
             data-language={language}
@@ -99,10 +95,6 @@ const CodeHighlight = ({
                       highlightedLines.has(idx + 1) &&
                       css`
                         background: ${rgba('#3b4252', 0.6)};
-
-                        .light-mode & {
-                          background: ${rgba('#d8dee9', 0.5)};
-                        }
                       `
                     }
                   >

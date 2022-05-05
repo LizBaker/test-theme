@@ -62,17 +62,9 @@ const NavLink = ({
           }
         `}
 
-        &:hover {
-          color: var(--primary-text-hover-color);
-        }
-
         ${active &&
         css`
-          background: var(--color-neutrals-100);
-
-          .dark-mode & {
-            background: var(--color-dark-100);
-          }
+          background: var(--primary-hover-color);
         `}
       `}
     >

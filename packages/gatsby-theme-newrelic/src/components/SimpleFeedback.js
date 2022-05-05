@@ -27,7 +27,7 @@ const SimpleFeedback = () => {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        background: var(--divider-color);
+        background: var(--primary-hover-color);
         padding: 0.5rem 1rem;
         gap: 1rem;
 
@@ -35,6 +35,9 @@ const SimpleFeedback = () => {
           > :first-of-type {
             margin-right: 1rem;
           }
+        }
+        .dark-mode & {
+          background: var(--primary-contrast-color);
         }
       `}
     >

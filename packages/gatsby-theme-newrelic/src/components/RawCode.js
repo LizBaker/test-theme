@@ -50,10 +50,6 @@ const RawCode = ({ code, language }) => {
         hyphens: none;
         text-shadow: none;
         padding: 1rem;
-
-        .light-mode & {
-          color: var(--color-nord-0);
-        }
       `}
       data-language={language}
     >
@@ -72,18 +68,10 @@ const RawCode = ({ code, language }) => {
           var {
             background: var(--color-nord-3);
             color: inherit;
-
-            .light-mode & {
-              background: var(--color-nord-4);
-            }
           }
 
           a:hover var {
             background: var(--color-nord-3);
-
-            .light-mode & {
-              background: var(--color-nord-5);
-            }
           }
 
           mark {
@@ -91,10 +79,6 @@ const RawCode = ({ code, language }) => {
 
             var {
               color: var(--color-neutrals-100);
-
-              .light-mode & {
-                color: var(--color-neutrals-900);
-              }
             }
           }
         `}
