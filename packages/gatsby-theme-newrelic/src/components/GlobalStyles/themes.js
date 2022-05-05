@@ -8,23 +8,21 @@ export default css`
     --primary-hover-color: var(--system-background-selected-low-contrast-light);
 
     --secondary-background-color: var(--system-background-surface-1-light);
-    --secondary-text-color: var(--color-neutrals-600);
+    --secondary-text-color: var(--system-text-secondary-light);
+);
     --secondary-text-color-inverted: var(
       --system-text-secondary-inverted-light
     );
-    --secondary-text-hover-color: var(--color-neutrals-700);
 
-    --tertiary-background-color: var(--color-neutrals-200);
+    --modal-background-color: var(--secondary-background-color);
 
     --button-background-color: var(--primary-text-color);
     --button-outline-color: var(--color-black);
     --button-text-color: var(--color-white);
 
-    --accent-text-color: var(--color-neutrals-500);
+    --accent-text-color: var(--secondary-text-color);
     --link-color: var(--primary-text-color);
-    --link-hover-color: var(--color-neutrals-100);
     --border-color: var(--system-border-regular-light);
-    --border-hover-color: var(--color-neutrals-500);
     --divider-color: var(--system-background-selected-low-contrast-light);
     --heading-text-color: var(--primary-text-color);
 
@@ -39,7 +37,7 @@ export default css`
 
     *:not(pre) > code,
     var {
-      background: var(--color-neutrals-100);
+      background: var(--primary-hover-color);
     }
   }
 
@@ -47,24 +45,21 @@ export default css`
     --primary-background-color: var(--system-background-app-dark);
     --primary-contrast-color: var(--system-text-primary-light);
     --primary-text-color: var(--system-text-primary-dark);
-    --primary-hover-color: var(--system-background-surface-1-dark);
+    --primary-hover-color: var(--system-background-hover-dark);
 
     --secondary-background-color: var(--system-background-surface-1-dark);
-    --secondary-text-color: var(--color-dark-600);
+    --secondary-text-color: var(--system-text-secondary-dark);
     --secondary-text-color-inverted: var(--system-text-secondary-inverted-dark);
-    --secondary-text-hover-color: var(--color-dark-700);
 
-    --tertiary-background-color: var(--color-dark-100);
+    --modal-background-color: var(--system-background-surface-1-dark);
 
     --button-background-color: var(--primary-text-color);
     --button-text-color: var(--color-black);
     --button-outline-color: var(--color-white);
 
-    --accent-text-color: var(--color-dark-600);
+    --accent-text-color: var(--secondary-text-color);
     --link-color: var(--primary-text-color);
-    --link-hover-color: var(--color-neutrals-400);
     --border-color: var(--system-border-regular-dark);
-    --border-hover-color: var(--color-dark-500);
     --divider-color: var(--primary-contrast-color);
     --heading-text-color: var(--primary-text-color);
 
@@ -78,7 +73,7 @@ export default css`
 
     *:not(pre) > code,
     var {
-      background: var(--color-neutrals-400);
+      background: var(--primary-contrast-color);
     }
   }
 `;

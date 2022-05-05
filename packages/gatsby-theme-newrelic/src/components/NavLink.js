@@ -53,10 +53,11 @@ const NavLink = ({
 
             ${active &&
             css`
-              border-left-color: var(--color-neutrals-400);
-
+              border-left-color: var(--system-text-secondary-inverted-light);
               .dark-mode & {
-                border-left-color: var(--color-dark-400);
+                border-left-color: var(
+                  --system-background-selected-low-contrast-dark
+                );
               }
             `}
           }

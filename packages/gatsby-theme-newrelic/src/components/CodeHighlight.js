@@ -72,7 +72,7 @@ const CodeHighlight = ({
                 }
 
                 mark .token {
-                  color: var(--color-neutrals-900) !important;
+                  color: var(--color-black) !important;
                 }
               `}
             >

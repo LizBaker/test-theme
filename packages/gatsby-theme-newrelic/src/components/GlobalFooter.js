@@ -48,16 +48,13 @@ const GlobalFooter = ({
       data-swiftype-index={false}
       className={className}
       css={css`
-        color: var(--secondary-text-color);
-        background-color: var(--color-neutrals-050);
+        color: var(--system-text-primary-dark);
+        background-color: var(--system-text-primary-light);
         z-index: 1;
 
-        .dark-mode & {
-          background-color: var(--color-dark-050);
-        }
-
         a {
-          color: currentColor;
+          color: var(--system-text-primary-dark);
+          border-color: var(--system-text-primary-dark);
         }
       `}
     >
@@ -82,6 +79,9 @@ const GlobalFooter = ({
             width="150px"
             css={css`
               display: block;
+              .logo-text {
+                fill: var(--system-text-primary-dark);
+              }
 
               @media screen and (max-width: 550px) {
                 margin-bottom: 1rem;
@@ -114,15 +114,7 @@ const GlobalFooter = ({
         </div>
       </div>
 
-      <div
-        css={css`
-          background-color: rgba(0, 0, 0, 0.05);
-
-          .dark-mode & {
-            background-color: rgba(0, 0, 0, 0.2);
-          }
-        `}
-      >
+      <div>
         <div
           css={css`
             font-size: 0.75rem;

@@ -42,11 +42,6 @@ const GlobalNavLink = ({ children, href, activeSite, instrumentation }) => {
 
         transition: 0.2s;
         text-decoration: none;
-
-        /* &:hover {
-          color: var(--color-neutrals-600);
-          background-color: var(--active-color);
-        } */
       `}
       instrumentation={{
         ...instrumentation,

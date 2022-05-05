@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { rgba } from 'polished';
 
 const VARIANTS = {
   PRIMARY: 'primary',
@@ -39,10 +38,6 @@ const styles = {
     [VARIANTS.LINK]: css`
       color: var(--link-color);
       background: transparent;
-
-      &:hover {
-        color: var(--link-hover-color);
-      }
     `,
     [VARIANTS.NORMAL]: css`
       color: var(--button-text-color);
@@ -58,21 +53,11 @@ const styles = {
     [VARIANTS.PLAIN]: css`
       color: var(--button-outline-color);
       background: transparent;
-
-      &:hover {
-        color: var(--color-brand-600);
-        background: ${rgba('#70ccd2', 0.17)};
-      }
     `,
     [VARIANTS.OUTLINE]: css`
       color: var(--button-outline-color);
       border: 1px solid var(--button-outline-color);
       background-color: transparent;
-
-      &:hover {
-        color: var(--color-brand-600);
-        border-color: var(--color-brand-500);
-      }
     `,
   },
   disabled: css`

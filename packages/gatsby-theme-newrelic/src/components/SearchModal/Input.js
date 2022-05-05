@@ -33,23 +33,14 @@ const Input = forwardRef(
 
           position: relative;
           width: 100%;
-
-          .dark-mode & {
-            --icon-color: var(--color-dark-500);
-          }
         `}
       >
         <Icon
           css={css`
-            color: var(--color-neutrals-400);
             position: absolute;
             left: var(--horizontal-spacing);
             top: 50%;
             transform: translateY(-50%);
-
-            .dark-mode & {
-              color: var(--color-dark-400);
-            }
           `}
           name="fe-search"
           size="1.5rem"
@@ -89,7 +80,7 @@ const Input = forwardRef(
             }
 
             .dark-mode & {
-              background: var(--color-dark-050);
+              background: var(--secondary-background-color);
             }
           `}
         />
@@ -157,10 +148,7 @@ const Input = forwardRef(
                     margin-right: 1rem;
                     ${filters?.find((filter) => filter.isSelected === true) &&
                     `
-                    color: var(--color-brand-600);
-                    .dark-mode & {
-                      color: var(--color-brand-200);
-                    }
+                    color: var(--brand-button-primary-accent);
                     `}
 
                     &:hover {
@@ -178,7 +166,15 @@ const Input = forwardRef(
                     size="1rem"
                   />
                 </Dropdown.Toggle>
-                <Dropdown.Menu>
+                <Dropdown.Menu
+                  css={css`
+                    .dark-mode & {
+                      background: var(
+                        --system-background-selected-low-contrast-dark
+                      );
+                    }
+                  `}
+                >
                   {filters.map((filter) => {
                     return (
                       <Dropdown.MenuItem
@@ -189,12 +185,9 @@ const Input = forwardRef(
                           ${filter.isSelected &&
                           `color: var(--text-color);
                             cursor: pointer;
-                            background: var(--color-neutrals-200);
+                            background: var(--primary-hover-color)
                             border-radius: 0.25rem;
-
-                            .dark-mode & {
-                              background: var(--color-dark-200);
-                            }`}
+                          `}
                         `}
                       >
                         <div

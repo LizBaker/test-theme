@@ -16,7 +16,7 @@ const ARROW_ALIGNMENTS = {
   `,
 };
 
-const Menu = ({ children }) => {
+const Menu = ({ children, className }) => {
   const { align, open } = useDropdown();
 
   return (
@@ -24,13 +24,7 @@ const Menu = ({ children }) => {
       css={css`
         --arrow-size: 5px;
         --arrow-offset: 0.5rem;
-        --background-color: white;
-        --text-color: var(--color-neutrals-900);
-
-        .dark-mode & {
-          --text-color: var(--color-dark-900);
-          --background-color: var(--color-dark-050);
-        }
+        --background-color: var(--secondary-background-color);
 
         position: absolute;
         top: calc(100% + var(--arrow-size));
@@ -56,6 +50,7 @@ const Menu = ({ children }) => {
           ${ARROW_ALIGNMENTS[align]};
         }
       `}
+      className={className}
     >
       <div
         css={css`

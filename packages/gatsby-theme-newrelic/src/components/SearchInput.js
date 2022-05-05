@@ -99,6 +99,7 @@ const SearchInput = forwardRef(
             background: var(--secondary-background-color);
             transition: 0.15s ease-out;
             line-height: 1;
+            color: var(--primary-text-color);
 
             padding-left: calc(
               var(--horizontal-spacing) + 0.5rem + var(--icon-size)

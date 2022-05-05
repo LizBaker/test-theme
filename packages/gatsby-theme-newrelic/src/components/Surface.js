@@ -24,7 +24,7 @@ const styles = {
   interactive: {
     [BASES.PRIMARY]: css`
       &:hover {
-        border-color: var(--border-hover-color);
+        border-color: var(--border-color);
       }
     `,
   },

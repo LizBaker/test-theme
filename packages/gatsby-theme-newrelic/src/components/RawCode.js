@@ -75,10 +75,10 @@ const RawCode = ({ code, language }) => {
           }
 
           mark {
-            color: var(--color-neutrals-900) !important;
+            color: var(--color-black) !important;
 
             var {
-              color: var(--color-neutrals-100);
+              color: var(--system-text-secondary-inverted-light);
             }
           }
         `}
