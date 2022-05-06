@@ -79,7 +79,7 @@ const GlobalFooter = ({
             width="150px"
             css={css`
               display: block;
-              .logo-text {
+              .header-logo {
                 fill: var(--system-text-primary-dark);
               }
 
