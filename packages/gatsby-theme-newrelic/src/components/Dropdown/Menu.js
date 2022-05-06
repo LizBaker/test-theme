@@ -67,6 +67,7 @@ const Menu = ({ children, className }) => {
 
 Menu.propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
 };
 
 export default Menu;
