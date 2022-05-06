@@ -1,5 +1,6 @@
 {
   "name": "gatsby-theme-newrelic",
+  "version": "1",
   "private": true,
   "workspaces": [
     "demo",
