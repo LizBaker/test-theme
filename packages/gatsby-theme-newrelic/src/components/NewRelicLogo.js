@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-// TODO: doublecheck this color: light - #1D252C && dark - #F9FAFA  -- CM
 const Character = styled.path`
-  fill: var(--heading-text-color);
+  fill: var(--primary-text-color);
 `;
 
 const NewRelicLogo = ({ className, size, omitText }) => (

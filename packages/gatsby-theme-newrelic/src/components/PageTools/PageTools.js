@@ -14,6 +14,10 @@ const PageTools = ({ className, children }) => {
         flex-direction: column;
         border: 1px solid var(--divider-color);
         border-radius: 0.25rem;
+
+        .dark-mode & {
+          border: 1px solid var(--primary-contrast-color);
+        }
       `}
     >
       {children}

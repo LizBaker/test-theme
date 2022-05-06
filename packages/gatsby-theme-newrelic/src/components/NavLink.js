@@ -53,26 +53,19 @@ const NavLink = ({
 
             ${active &&
             css`
-              border-left-color: var(--color-neutrals-400);
-
+              border-left-color: var(--system-text-secondary-inverted-light);
               .dark-mode & {
-                border-left-color: var(--color-dark-400);
+                border-left-color: var(
+                  --system-background-selected-low-contrast-dark
+                );
               }
             `}
           }
         `}
 
-        &:hover {
-          color: var(--primary-text-hover-color);
-        }
-
         ${active &&
         css`
-          background: var(--color-neutrals-100);
-
-          .dark-mode & {
-            background: var(--color-dark-100);
-          }
+          background: var(--primary-hover-color);
         `}
       `}
     >

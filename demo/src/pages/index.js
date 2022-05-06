@@ -16,6 +16,7 @@ import {
   SimpleFeedback,
   Surface,
   Table,
+  TableOfContents,
   Tag,
   TagList,
   Terminal,
@@ -144,7 +145,28 @@ const IndexPage = () => {
           />
         </section>
         <section>
-          <h2>Collapsers</h2>
+          <h2 id="tbc">Table of contents</h2>
+          <TableOfContents
+            headings={[
+              { id: 'tbc', text: 'Table of contents' },
+              { id: 'coll', text: 'Collapsers' },
+            ]}
+          />
+        </section>
+        <section>
+          <h2>Text styling</h2>
+          <br />
+          <blockquote>
+            Hello I'm a blockquote <br /> I've got plenty to say
+          </blockquote>
+          <ul>
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="coll">Collapsers</h2>
           <CollapserGroup>
             <Collapser id="example-1" title="Check out this cool collapser">
               This is a pretty neat little utility. I can show all kinds of
@@ -155,6 +177,7 @@ const IndexPage = () => {
             </Collapser>
             <Collapser title="This one is open by default" defaultOpen>
               And you can see everything inside of it!
+              <code>hello here is some code woohoo</code>
             </Collapser>
           </CollapserGroup>
         </section>
@@ -162,16 +185,21 @@ const IndexPage = () => {
           <Callout variant={Callout.VARIANT.CAUTION}>
             Danger! Exercise extreme caution.
           </Callout>
+          <br />
           <Callout variant={Callout.VARIANT.IMPORTANT}>
             Important! I said, this is important.
           </Callout>
+          <br />
           <Callout variant={Callout.VARIANT.TIP}>Here's a tip.</Callout>
+          <br />
           <Callout variant={Callout.VARIANT.TIP} title="Hello">
             Here's a tip with a custom title
           </Callout>
+          <br />
           <Callout variant={Callout.VARIANT.TIP} title={null}>
             Here's a tip with no title
           </Callout>
+          <br />
           <Callout variant={Callout.VARIANT.COURSE}>
             This callout is for a guide that is part of a super cool course
           </Callout>
@@ -350,7 +378,10 @@ nr1 create --type nerdpack --name pageviews-app
               grid-gap: 2rem;
               padding: 1rem;
               border-radius: 4px;
-              background: var(--secondary-background-color);
+              background: var(--primary-hover-color);
+              .dark-mode & {
+                background: var(--system-background-surface-1-dark);
+              }
             `}
           >
             <Surface

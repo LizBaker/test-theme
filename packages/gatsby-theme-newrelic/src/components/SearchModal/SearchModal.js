@@ -101,15 +101,14 @@ const SearchModal = ({ onClose, isOpen, onChange, value }) => {
               em {
                 border-radius: 0.125rem;
                 padding: 0.125rem 0.25rem;
-                color: var(--color-neutrals-800);
-                background: var(--color-neutrals-200);
+                background: var(--system-text-secondary-inverted-light);
                 font-style: normal;
                 font-weight: bold;
                 font-size: 85%;
-
                 .dark-mode & {
-                  color: var(--color-brand-300);
-                  background: var(--color-dark-200);
+                  background: var(
+                    --system-background-selected-low-contrast-dark
+                  );
                 }
               }
 
@@ -176,7 +175,7 @@ const SearchModal = ({ onClose, isOpen, onChange, value }) => {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     flex-grow: 1;
-                    background-color: white;
+                    background-color: var(--modal-background-color);
                     border-bottom-left-radius: 0.25rem;
                     border-bottom-right-radius: 0.25rem;
                     box-shadow: var(--shadow-6);
@@ -184,9 +183,6 @@ const SearchModal = ({ onClose, isOpen, onChange, value }) => {
                     border-top: none;
                     overflow: hidden;
 
-                    .dark-mode & {
-                      background: var(--color-dark-050);
-                    }
                     @media screen and (max-width: 760px) {
                       grid-template-columns: 1fr;
                     }

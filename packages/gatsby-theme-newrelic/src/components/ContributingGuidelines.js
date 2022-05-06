@@ -35,7 +35,7 @@ const ContributingGuidelines = ({
     <PageTools.Section
       className={className}
       css={css`
-        border-bottom: 1px solid var(--divider-color);
+        border-bottom: 1px solid var(--primary-hover-color);
       `}
     >
       <div
