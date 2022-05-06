@@ -274,7 +274,7 @@ const GlobalHeader = ({ className, activeSite }) => {
               <NewRelicLogo
                 size="104px"
                 css={css`
-                  .logo-text {
+                  .header-logo {
                     fill: var(--system-text-primary-dark);
                   }
                 `}
