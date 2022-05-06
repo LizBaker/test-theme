@@ -1,0 +1,62 @@
+{
+  "404": {
+    "headingText": "Hmm... We can't find this",
+    "searchInputLabel": "Try refining your search.",
+    "searchResultMessage": "Were you looking for any of these?",
+    "docsHomeMessage": "Go back to <1>{{nrSubDomain}} home</1>.",
+    "fileIssueMessage": "Still can't find what you're looking for?"
+  },
+  "button": {
+    "close": "Close",
+    "copied": "Copied",
+    "copy": "Copy",
+    "login": "Log in",
+    "signUp": "Free account",
+    "startNow": "Start now"
+  },
+  "callout": {
+    "tip": "Tip",
+    "caution": "Caution",
+    "important": "Important",
+    "course": "Course"
+  },
+  "github": {
+    "createIssue": "Create issue",
+    "editPage": "Edit page"
+  },
+  "contributing": {
+    "guide": "Suggest a change and learn how to <1>contribute</1>"
+  },
+  "cookieConsent": {
+    "title": "This site uses cookies",
+    "statement": "We use cookies and other similar technologies (\"Cookies\") on our websites and services to enhance your experience and to provide you with relevant content. By using our websites and services you are agreeing to the use of cookies. You can read more <2>here</2>. If you consent to our cookies, please click <4>Yes</4>.",
+    "agree": "Yes",
+    "disagree": "No"
+  },
+  "feedback": {
+    "question": "Was this page helpful?",
+    "positive": "Yes",
+    "negative": "No"
+  },
+  "footer": {
+    "copyright": "Copyright {{copyrightSymbol}} {{year}} New Relic Inc.",
+    "careers": "Careers",
+    "terms": "Terms of Service",
+    "dcmaPolicy": "DCMA Policy",
+    "privacyNotice": "Privacy Notice",
+    "cookiePolicy": "Cookie Policy",
+    "ukSlaveryAct": "UK Slavery Act"
+  },
+  "mobileNav": {
+    "header": "Pages"
+  },
+  "relatedResources": {
+    "title": "Related resources"
+  },
+  "searchInput": {
+    "placeholder": "Search"
+  },
+  "tableOfContents": {
+    "title": "On this page"
+  }
+}
