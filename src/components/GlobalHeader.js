@@ -14,7 +14,6 @@ import SearchInput from './SearchInput';
 import useMedia from 'use-media';
 import { useLocation } from '@reach/router';
 import useQueryParams from '../hooks/useQueryParams';
-import useLocale from '../hooks/useLocale';
 import useThemeTranslation from '../hooks/useThemeTranslation';
 import path from 'path';
 import { rgba } from 'polished';
@@ -33,10 +32,8 @@ const action = css`
 export const NR_SITES = {
   DOCS: 'DOCS',
   DEVELOPER: 'DEVELOPER',
-  OSS: 'OSS',
   COMMUNITY: 'COMMUNITY',
   LEARN: 'LEARN',
-  IO: 'IO',
 };
 
 const HEADER_LINKS = new Map();
@@ -49,10 +46,6 @@ HEADER_LINKS.set(NR_SITES.DOCS, {
     text: 'Developer',
     href: 'https://developer.newrelic.com/',
   })
-  .set(NR_SITES.OSS, {
-    text: 'Open Source',
-    href: 'https://opensource.newrelic.com/',
-  })
   .set(NR_SITES.COMMUNITY, {
     text: 'Community',
     href: 'https://discuss.newrelic.com/',
@@ -60,10 +53,6 @@ HEADER_LINKS.set(NR_SITES.DOCS, {
   .set(NR_SITES.LEARN, {
     text: 'Learn',
     href: 'https://learn.newrelic.com/',
-  })
-  .set(NR_SITES.IO, {
-    text: 'Instant Observability',
-    href: 'https://newrelic.com/instant-observability',
   });
 
 const createNavList = (listType, activeSite = null) => {
@@ -105,7 +94,6 @@ const CONDENSED_BREAKPOINT = '815px';
 const NAV_BREAKPOINT = '770px';
 
 // changes layout for mobile view
-const MOBILE_BREAKPOINT = '600px';
 
 const actionLink = css`
   ${action};
@@ -152,7 +140,7 @@ const useSearchQuery = () => {
   return [searchTerm, setSearchTerm];
 };
 
-const GlobalHeader = ({ className, activeSite }) => {
+const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
   const hasMounted = useHasMounted();
   const location = useLocation();
   const { queryParams, setQueryParam, deleteQueryParam } = useQueryParams();
@@ -161,6 +149,9 @@ const GlobalHeader = ({ className, activeSite }) => {
 
   const {
     allLocale: { nodes: locales },
+    site: {
+      layout: { mobileBreakpoint },
+    },
   } = useStaticQuery(graphql`
     query GlobalHeaderQuery {
       allLocale(sort: { fields: [isDefault, locale], order: [DESC, ASC] }) {
@@ -168,6 +159,11 @@ const GlobalHeader = ({ className, activeSite }) => {
           locale
           localName
           isDefault
+        }
+      }
+      site {
+        layout {
+          mobileBreakpoint
         }
       }
     }
@@ -178,8 +174,6 @@ const GlobalHeader = ({ className, activeSite }) => {
   const matchLocalePath = new RegExp(
     `^\\/(${locales.map(({ locale }) => locale).join('|')})`
   );
-
-  const locale = useLocale();
 
   const handleLocaleClick = useInstrumentedHandler(null, ({ locale }) => ({
     eventName: 'localeDropDownClick',
@@ -375,66 +369,70 @@ const GlobalHeader = ({ className, activeSite }) => {
                 }
               `}
             >
-              <Link
-                to="?q="
-                css={css`
-                  ${actionLink}
+              {!hideSearch && (
+                <>
+                  <Link
+                    to="?q="
+                    css={css`
+                      ${actionLink}
 
-                  display: none;
+                      display: none;
 
-                  @media screen and (max-width: ${CONDENSED_BREAKPOINT}) {
-                    display: block;
-                  }
-                `}
-              >
-                <Icon css={actionIcon} name="fe-search" size="1.5rem" />
-              </Link>
-              <SearchInput
-                placeholder={t('searchInput.placeholder')}
-                size={SearchInput.SIZE.MEDIUM}
-                focusWithHotKey="/"
-                css={css`
-                  --icon-size: 1.5rem;
-                  min-width: 150px;
-                  max-width: 350px;
+                      @media screen and (max-width: ${CONDENSED_BREAKPOINT}) {
+                        display: block;
+                      }
+                    `}
+                  >
+                    <Icon css={actionIcon} name="fe-search" size="1.5rem" />
+                  </Link>
+                  <SearchInput
+                    placeholder={t('searchInput.placeholder')}
+                    size={SearchInput.SIZE.MEDIUM}
+                    focusWithHotKey="/"
+                    css={css`
+                      --icon-size: 1.5rem;
+                      min-width: 150px;
+                      max-width: 350px;
 
-                  svg {
-                    width: 1.5rem;
-                    height: 1.5rem;
-                  }
+                      svg {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                      }
 
-                  input {
-                    border: none;
-                    height: 40px;
-                  }
+                      input {
+                        border: none;
+                        height: 40px;
+                      }
 
-                  .search-hotkey {
-                    border-radius: 0.125rem;
-                    font-size: 0.875rem;
-                    padding: 0.125rem 0.375rem;
-                  }
+                      .search-hotkey {
+                        border-radius: 0.125rem;
+                        font-size: 0.875rem;
+                        padding: 0.125rem 0.375rem;
+                      }
 
-                  @media screen and (max-width: ${CONDENSED_BREAKPOINT}) {
-                    display: none;
-                  }
-                `}
-                onFocus={() => {
-                  setQueryParam('q', '');
-                }}
-              />
+                      @media screen and (max-width: ${CONDENSED_BREAKPOINT}) {
+                        display: none;
+                      }
+                    `}
+                    onFocus={() => {
+                      setQueryParam('q', '');
+                    }}
+                  />
+                </>
+              )}
             </li>
             {locales.length > 1 && (
               <li
                 css={css`
-                  @media screen and (max-width: ${MOBILE_BREAKPOINT}) {
-                    display: none;
-                  }
+                  display: flex;
+                  flex-direction: row;
                 `}
               >
                 <Dropdown align="right">
                   <Dropdown.Toggle
-                    size={Button.SIZE.SMALL}
+                    size={Button.SIZE.EXTRA_SMALL}
                     variant={Button.VARIANT.LINK}
+                    chevron={false}
                     css={css`
                       margin: 0;
                       height: 72px;
@@ -444,7 +442,7 @@ const GlobalHeader = ({ className, activeSite }) => {
                       background: transparent;
                     `}
                   >
-                    {locale.localName}
+                    <Icon name="nr-i18n" size="20px" />
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
                     {locales.map(({ isDefault, locale, localName }) => (
@@ -462,28 +460,27 @@ const GlobalHeader = ({ className, activeSite }) => {
                     ))}
                   </Dropdown.Menu>
                 </Dropdown>
+
+                <DarkModeToggle
+                  css={[
+                    css`
+                      font-size: 0.75rem;
+                      @media screen and (max-width: 450px) {
+                        margin: 0;
+                      }
+                      color: var(--system-text-primary-dark);
+                    `,
+                  ]}
+                  size="27px"
+                />
               </li>
             )}
-            <li>
-              <DarkModeToggle
-                css={[
-                  actionIcon,
-                  action,
-                  css`
-                    margin: 0 24px;
 
-                    @media screen and (max-width: 450px) {
-                      margin: 0;
-                    }
-                  `,
-                ]}
-                size="1.5rem"
-              />
-            </li>
             <li
               css={css`
                 display: flex;
                 align-items: right;
+                flex-direction: row;
               `}
             >
               <Button
@@ -497,7 +494,7 @@ const GlobalHeader = ({ className, activeSite }) => {
                     color: var(--system-text-primary-dark);
                   }
 
-                  @media screen and (max-width: ${MOBILE_BREAKPOINT}) {
+                  @media screen and (max-width: ${mobileBreakpoint}) {
                     display: none;
                   }
                 `}
@@ -508,12 +505,6 @@ const GlobalHeader = ({ className, activeSite }) => {
               >
                 <span>{t('button.login')}</span>
               </Button>
-            </li>
-            <li
-              css={css`
-                display: flex;
-              `}
-            >
               <SplitTextButton
                 css={css`
                   span {
@@ -522,6 +513,11 @@ const GlobalHeader = ({ className, activeSite }) => {
                 `}
               />
             </li>
+            <li
+              css={css`
+                display: flex;
+              `}
+            />
           </ul>
         </div>
       </div>
@@ -532,6 +528,7 @@ const GlobalHeader = ({ className, activeSite }) => {
 GlobalHeader.propTypes = {
   className: PropTypes.string,
   activeSite: PropTypes.oneOf(Object.values(NR_SITES)),
+  hideSearch: PropTypes.bool,
 };
 
 export default GlobalHeader;

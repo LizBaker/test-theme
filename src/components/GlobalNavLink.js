@@ -39,6 +39,7 @@ const GlobalNavLink = ({ children, href, activeSite, instrumentation }) => {
         color: var(--system-text-primary-dark);
         font-size: 0.75rem;
         line-height: 1.125rem;
+        font-weight: 400;
 
         transition: 0.2s;
         text-decoration: none;

@@ -1,7 +1,20 @@
 const ENDPOINT =
   'https://search-api.swiftype.com/api/v1/public/engines/search.json';
 
-const search = async ({ searchTerm, filters = {}, perPage = 10, page = 1 }) => {
+const search = async ({ searchTerm, filters = [], perPage = 10, page = 1 }) => {
+  const { searchBy, source } = filters.reduce(
+    (acc, { type, defaultFilters }) => ({
+      ...acc,
+      [type]: defaultFilters,
+    }),
+    {}
+  );
+
+  const searchByFilters = searchBy?.map((filter) =>
+    filter.isSelected ? `${filter.name}^10` : `${filter.name}^0`
+  );
+
+  const sourceFilters = { type: source };
   const res = await fetch(ENDPOINT, {
     method: 'POST',
     headers: {
@@ -12,6 +25,9 @@ const search = async ({ searchTerm, filters = {}, perPage = 10, page = 1 }) => {
       engine_key: 'Ad9HfGjDw4GRkcmJjUut',
       page,
       per_page: perPage,
+      search_fields: {
+        page: searchByFilters,
+      },
       highlight_fields: {
         page: {
           title: {
@@ -25,9 +41,8 @@ const search = async ({ searchTerm, filters = {}, perPage = 10, page = 1 }) => {
         },
       },
       filters: {
-        ...filters,
         page: {
-          ...filters.page,
+          ...sourceFilters,
           document_type: ['!views_page_menu', '!views_page_content'],
         },
       },

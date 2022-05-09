@@ -5,6 +5,7 @@ import Button from '../Button';
 import Icon from '../Icon';
 import Spinner from '../Spinner';
 import Dropdown from '../Dropdown';
+import Filters from './Filter';
 
 const Input = forwardRef(
   (
@@ -23,6 +24,9 @@ const Input = forwardRef(
     },
     ref
   ) => {
+    const flattenedFilters = filters.flatMap(
+      ({ defaultFilters }) => defaultFilters
+    );
     return (
       <div
         width={width}
@@ -146,7 +150,9 @@ const Input = forwardRef(
                     padding: 0.5rem;
                     outline: none;
                     margin-right: 1rem;
-                    ${filters?.find((filter) => filter.isSelected === true) &&
+                    ${flattenedFilters?.find(
+                      (filter) => filter?.isSelected === true
+                    ) &&
                     `
                     color: var(--brand-button-primary-accent);
                     `}
@@ -166,70 +172,33 @@ const Input = forwardRef(
                     size="1rem"
                   />
                 </Dropdown.Toggle>
-                <Dropdown.Menu
-                  css={css`
-                    .dark-mode & {
-                      background: var(
-                        --system-background-selected-low-contrast-dark
-                      );
-                    }
-                  `}
-                >
-                  {filters.map((filter) => {
-                    return (
-                      <Dropdown.MenuItem
-                        key={filter.name}
-                        onClick={() => onFilter(filter.name)}
-                        css={css`
-                          margin-bottom: 0.15rem;
-                          ${filter.isSelected &&
-                          `color: var(--text-color);
-                            cursor: pointer;
-                            background: var(--primary-hover-color)
-                            border-radius: 0.25rem;
-                          `}
-                        `}
-                      >
-                        <div
+                <Dropdown.Menu>
+                  <div
+                    css={css`
+                      display: flex;
+                      flex-direction: row;
+                    `}
+                  >
+                    {filters?.map(({ type, defaultFilters }) => (
+                      <div key={type}>
+                        <h6
                           css={css`
-                            display: flex;
-                            flex-direction: row;
-                            justify-content: space-between;
-                            align-items: baseline;
-                            ${filter.isSelected && ``}
+                            padding: 0.25rem;
                           `}
                         >
-                          <div
-                            css={css`
-                              text-transform: uppercase;
-                              font-size: 0.625rem;
-                            `}
-                          >
-                            {filter.name.replace('_', ' ')}
-                          </div>
-                          <div
-                            css={css`
-                              ${filter.isSelected
-                                ? `animation-duration: 0.1s;
-                                animation-name: fadein;
-                                @keyframes fadein {
-                                  from {
-                                    opacity: 0;
-                                  }
-                                  to {
-                                    opacity: 1;
-                                  }
-                                }
-                              `
-                                : `opacity: 0;`}
-                            `}
-                          >
-                            <Icon size="0.625rem" name="fe-check" />
-                          </div>
-                        </div>
-                      </Dropdown.MenuItem>
-                    );
-                  })}
+                          {type
+                            ?.split(/(?=[A-Z])/)
+                            .join(' ')
+                            .toUpperCase()}
+                        </h6>
+                        <Filters
+                          key={type}
+                          onClick={(name) => onFilter(name)}
+                          filters={defaultFilters}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </Dropdown.Menu>
               </Dropdown>
             )}
@@ -246,6 +215,8 @@ const Input = forwardRef(
     );
   }
 );
+
+// filters = [{type, filters}, ]
 
 Input.propTypes = {
   className: PropTypes.string,

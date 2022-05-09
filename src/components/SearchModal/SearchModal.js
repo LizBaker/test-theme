@@ -24,6 +24,17 @@ const defaultFilters = [
   { name: 'quickstarts', isSelected: false },
 ];
 
+const defaultSearchByFilters = [
+  { name: 'title', isSelected: false },
+  { name: 'body', isSelected: false },
+  { name: 'sections', isSelected: false },
+];
+
+const defaultFilterTypes = [
+  { type: 'source', defaultFilters: defaultFilters },
+  { type: 'searchBy', defaultFilters: defaultSearchByFilters },
+];
+
 const SearchModal = ({ onClose, isOpen, onChange, value }) => {
   const { pathname } = useLocation();
   const didChangeRoute =
@@ -31,7 +42,7 @@ const SearchModal = ({ onClose, isOpen, onChange, value }) => {
   const { t } = useThemeTranslation();
   const searchInput = useRef();
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [filters, setFilters] = useState(defaultFilters);
+  const [filters, setFilters] = useState(defaultFilterTypes);
   const { status, results, fetchNextPage } = useSearch({
     searchTerm: value,
     filters,
@@ -147,11 +158,14 @@ const SearchModal = ({ onClose, isOpen, onChange, value }) => {
                 }}
                 onFilter={(filterName) => {
                   setFilters((filters) => {
-                    return filters.map((filter) => {
-                      return filter.name === filterName
-                        ? { ...filter, isSelected: !filter.isSelected }
-                        : filter;
-                    });
+                    return filters.map(({ defaultFilters, type }) => ({
+                      defaultFilters: defaultFilters.map((filter) => {
+                        return filter.name === filterName
+                          ? { ...filter, isSelected: !filter.isSelected }
+                          : filter;
+                      }),
+                      type,
+                    }));
                   });
                 }}
                 value={value}

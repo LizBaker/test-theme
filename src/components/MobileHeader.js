@@ -6,11 +6,13 @@ import Logo from './Logo';
 import HamburgerMenu from './HamburgerMenu';
 import MobileNavigation from './MobileNavigation';
 import { graphql, useStaticQuery } from 'gatsby';
-import { useToggle } from 'react-use';
+import { useToggle, useLocation } from 'react-use';
 import useWarning from '../hooks/useWarning';
+import Icon from './Icon';
 
 const MobileHeader = ({ children }) => {
   const [isOpen, toggle] = useToggle(false);
+  const location = useLocation();
 
   const {
     site: {
@@ -57,7 +59,39 @@ const MobileHeader = ({ children }) => {
           `}
         />
       </Link>
-      <HamburgerMenu onToggle={toggle} isOpen={isOpen} />
+      <div
+        css={css`
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        `}
+      >
+        <Link
+          to="?q="
+          css={css`
+            color: var(--primary-text-color);
+            transition: all 0.2s ease-out;
+            display: flex;
+            align-items: center;
+
+            display: none;
+
+            @media screen and (max-width: ${mobileBreakpoint}) {
+              display: block;
+            }
+          `}
+        >
+          <Icon
+            css={css`
+              display: block;
+              cursor: pointer;
+            `}
+            name="fe-search"
+            size="1rem"
+          />
+        </Link>
+        <HamburgerMenu onToggle={toggle} isOpen={isOpen} />
+      </div>
       <MobileNavigation isOpen={isOpen} onClose={() => toggle(false)}>
         {children}
       </MobileNavigation>
