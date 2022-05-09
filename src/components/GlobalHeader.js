@@ -24,11 +24,6 @@ import useTessen from '../hooks/useTessen';
 import SplitTextButton from './SplitTextButton';
 import useInstrumentedHandler from '../hooks/useInstrumentedHandler';
 
-const action = css`
-  color: var(--system-text-primary-dark);
-  transition: all 0.2s ease-out;
-`;
-
 export const NR_SITES = {
   DOCS: 'DOCS',
   DEVELOPER: 'DEVELOPER',
@@ -92,20 +87,6 @@ const CONDENSED_BREAKPOINT = '815px';
 
 // swaps out logo into collapsable nav
 const NAV_BREAKPOINT = '770px';
-
-// changes layout for mobile view
-
-const actionLink = css`
-  ${action};
-
-  display: flex;
-  align-items: center;
-`;
-
-const actionIcon = css`
-  display: block;
-  cursor: pointer;
-`;
 
 const useSearchQuery = () => {
   const { queryParams, setQueryParam } = useQueryParams();
@@ -371,20 +352,6 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
             >
               {!hideSearch && (
                 <>
-                  <Link
-                    to="?q="
-                    css={css`
-                      ${actionLink}
-
-                      display: none;
-
-                      @media screen and (max-width: ${CONDENSED_BREAKPOINT}) {
-                        display: block;
-                      }
-                    `}
-                  >
-                    <Icon css={actionIcon} name="fe-search" size="1.5rem" />
-                  </Link>
                   <SearchInput
                     placeholder={t('searchInput.placeholder')}
                     size={SearchInput.SIZE.MEDIUM}
@@ -421,13 +388,13 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
                 </>
               )}
             </li>
-            {locales.length > 1 && (
-              <li
-                css={css`
-                  display: flex;
-                  flex-direction: row;
-                `}
-              >
+            <li
+              css={css`
+                display: flex;
+                flex-direction: row;
+              `}
+            >
+              {locales.length > 1 && (
                 <Dropdown align="right">
                   <Dropdown.Toggle
                     size={Button.SIZE.EXTRA_SMALL}
@@ -460,21 +427,20 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
                     ))}
                   </Dropdown.Menu>
                 </Dropdown>
-
-                <DarkModeToggle
-                  css={[
-                    css`
-                      font-size: 0.75rem;
-                      @media screen and (max-width: 450px) {
-                        margin: 0;
-                      }
-                      color: var(--system-text-primary-dark);
-                    `,
-                  ]}
-                  size="27px"
-                />
-              </li>
-            )}
+              )}
+              <DarkModeToggle
+                css={[
+                  css`
+                    font-size: 0.75rem;
+                    @media screen and (max-width: 450px) {
+                      margin: 0;
+                    }
+                    color: var(--system-text-primary-dark);
+                  `,
+                ]}
+                size="27px"
+              />
+            </li>
 
             <li
               css={css`
