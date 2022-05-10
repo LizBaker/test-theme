@@ -79,10 +79,12 @@ const GlobalFooter = ({
             width="150px"
             css={css`
               display: block;
-              .header-logo {
+              .text-color {
                 fill: var(--system-text-primary-dark);
               }
-
+              .hexagon-color {
+                fill: var(--system-text-primary-dark);
+              }
               @media screen and (max-width: 550px) {
                 margin-bottom: 1rem;
               }

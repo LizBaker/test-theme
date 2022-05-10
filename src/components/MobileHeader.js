@@ -6,13 +6,12 @@ import Logo from './Logo';
 import HamburgerMenu from './HamburgerMenu';
 import MobileNavigation from './MobileNavigation';
 import { graphql, useStaticQuery } from 'gatsby';
-import { useToggle, useLocation } from 'react-use';
+import { useToggle } from 'react-use';
 import useWarning from '../hooks/useWarning';
 import Icon from './Icon';
 
 const MobileHeader = ({ children }) => {
   const [isOpen, toggle] = useToggle(false);
-  const location = useLocation();
 
   const {
     site: {
