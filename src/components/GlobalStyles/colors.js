@@ -9,7 +9,8 @@ export default css`
   --system-text-secondary-inverted-light: #cdd3d5;
   --system-background-app-light: #f3f4f4;
   --system-background-surface-1-light: #ffffff;
-  --system-border-regular-light: #e7e9ea;
+  --system-background-muted-light: #dcdede;
+  --system-border-strong-light: #cdd3d5;
   --system-background-selected-low-contrast-light: #e8e8e8;
 
   --system-text-primary-dark: #e9ecec;
@@ -22,8 +23,22 @@ export default css`
   --system-background-selected-low-contrast-dark: #404b53;
   --system-background-floating-dark: #3a444b;
 
-  --code-console-background-main: #212c31;
+  --interactive-link-light: #0c74df;
+  --interactive-link-dark: #3d9dff;
+
+  --code-console-background-main: #182125;
   --code-console-text-highlight: #429fff;
+  --code-console-text-primary: #ffffff;
+  --code-console-text-error: #ff6f66;
+  --code-console-text-success: #01cb81;
+  --code-console-text-warning: #ffd23d;
+
+  --code-query-syntax-keyword: #da66ed;
+  --code-query-syntax-function: #52a7f7;
+  --code-query-syntax-string: #6cb404;
+  --code-query-syntax-regex: #8c97ff;
+  --code-query-syntax-numeric: #e89600;
+  --code-query-syntax-operator: #19b1bb;
 
   --brand-button-primary-accent: #1ce783;
   --brand-button-primary-accent-hover: #00ce7c;
@@ -33,21 +48,17 @@ export default css`
   --attention-notification-warning: #ffd23d;
   --attention-notification-info: #0c74df;
 
-  // https://www.nordtheme.com/docs/colors-and-palettes
-  --color-nord-0: #2e3440;
-  --color-nord-1: #3b4252;
-  --color-nord-2: #434c5e;
-  --color-nord-3: #4c566a;
-  --color-nord-4: #d8dee9;
-  --color-nord-5: #e5e9f0;
-  --color-nord-6: #eceff4;
-  --color-nord-7: #8fbcbb;
-  --color-nord-8: #88c0d0;
-  --color-nord-9: #81a1c1;
-  --color-nord-10: #5e81ac;
-  --color-nord-11: #bf616a;
-  --color-nord-12: #d08770;
-  --color-nord-13: #ebcb8b;
-  --color-nord-14: #a3be8c;
-  --color-nord-15: #b48ead;
+  // https://github.com/chriskempson/tomorrow-theme#tomorrow-night
+  --color-text: #c5c8c6;
+  --color-background: #212c31;
+  --color-current-line: #282a2e;
+  --color-selection: #373b41;
+  --color-comment: #969896;
+  --color-aqua: #8abeb7;
+  --color-blue: #81a2be;
+  --color-red: #cc6666;
+  --color-orange: #de935f;
+  --color-yellow: #f0c674;
+  --color-green: #b5bd68;
+  --color-purple: #b294bb;
 `;

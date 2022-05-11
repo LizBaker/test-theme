@@ -24,6 +24,10 @@ const MenuItem = ({ as, children, href, className, onClick }) => {
           cursor: pointer;
           background: var(--primary-hover-color);
           border-radius: 0.25rem;
+
+          .dark-mode & {
+            background-color: var(--system-border-regular-dark);
+          }
         }
       `}
     >

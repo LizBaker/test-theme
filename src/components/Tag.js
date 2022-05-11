@@ -8,7 +8,7 @@ const isInteractive = ({ as, interactive }) =>
   interactive || as === 'a' || as === Link;
 
 const Tag = styled.span`
-  background: var(--system-text-secondary-inverted-light);
+  background: var(--system-background-muted-light);
   padding: 0.125rem 0.5rem;
   border-radius: 0.25rem;
   font-size: 0.75rem;

@@ -26,7 +26,7 @@ const CodeHighlight = ({
             css={css`
               ${nordTheme};
 
-              color: var(--color-nord-6);
+              color: var(--code-console-text-primary);
               font-family: var(--code-font);
               font-size: 0.75rem;
               display: block;
@@ -63,12 +63,12 @@ const CodeHighlight = ({
                 }
 
                 var {
-                  background: var(--color-nord-2);
+                  background: var(--color-current-line);
                   color: inherit;
                 }
 
                 a:hover var {
-                  background: var(--color-nord-3);
+                  background: var(--color-selection);
                 }
 
                 mark .token {
@@ -83,7 +83,7 @@ const CodeHighlight = ({
                     <div
                       css={css`
                         user-select: none;
-                        color: var(--color-nord-3);
+                        color: var(--color-selection);
                         text-align: right;
                       `}
                     >
@@ -94,7 +94,7 @@ const CodeHighlight = ({
                     css={
                       highlightedLines.has(idx + 1) &&
                       css`
-                        background: ${rgba('#3b4252', 0.6)};
+                        background: ${rgba('#373b41', 0.6)};
                       `
                     }
                   >
@@ -126,14 +126,14 @@ const nordTheme = css`
     &.prolog,
     &.doctype,
     &.cdata {
-      color: var(--color-nord-3);
+      color: var(--color-selection);
     }
     &.tag,
     &.class-name {
-      color: var(--color-nord-7);
+      color: var(--code-query-syntax-keyword);
     }
     &.function {
-      color: var(--color-nord-8);
+      color: var(--code-query-syntax-function);
     }
     &.punctuation,
     &.operator,
@@ -143,12 +143,12 @@ const nordTheme = css`
     &.atrule,
     &.attr-value,
     &.url {
-      color: var(--color-nord-9);
+      color: var(--code-query-syntax-operator);
     }
     &.regex,
     &.important,
     &.variable {
-      color: var(--color-nord-12);
+      color: var(--code-query-syntax-regex);
     }
     &.selector,
     &.attr-name,
@@ -156,7 +156,7 @@ const nordTheme = css`
     &.char,
     &.builtin,
     &.inserted {
-      color: var(--color-nord-14);
+      color: var(--code-query-syntax-string);
     }
     &.property,
     &.boolean,
@@ -164,7 +164,7 @@ const nordTheme = css`
     &.symbol,
     &.deleted,
     &.number {
-      color: var(--color-nord-15);
+      color: var(--code-query-syntax-numeric);
     }
     &.important,
     &.bold {

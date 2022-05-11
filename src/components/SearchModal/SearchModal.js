@@ -27,7 +27,6 @@ const defaultFilters = [
 const defaultSearchByFilters = [
   { name: 'title', isSelected: false },
   { name: 'body', isSelected: false },
-  { name: 'sections', isSelected: false },
 ];
 
 const defaultFilterTypes = [
@@ -99,10 +98,10 @@ const SearchModal = ({ onClose, isOpen, onChange, value }) => {
               left: 0;
               padding: var(--site-content-padding);
               z-index: 900;
-              background: ${rgba('#d5d7d7', 0.5)};
+              background: ${rgba('#d5d7d7', 0.75)};
 
               .dark-mode & {
-                background: hsla(195, 20%, 20%, 0.5);
+                background: ${rgba('#3a444b', 0.75)};
               }
 
               @media screen and (max-width: 760px) {

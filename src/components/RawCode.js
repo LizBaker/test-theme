@@ -38,7 +38,7 @@ const RawCode = ({ code, language }) => {
   return (
     <pre
       css={css`
-        color: var(--color-nord-6);
+        color: var(--code-console-text-primary);
         font-family: var(--code-font);
         font-size: 0.75rem;
         display: block;
@@ -66,12 +66,12 @@ const RawCode = ({ code, language }) => {
           }
 
           var {
-            background: var(--color-nord-3);
+            background: var(--color-selection);
             color: inherit;
           }
 
           a:hover var {
-            background: var(--color-nord-3);
+            background: var(--color-selection);
           }
 
           mark {

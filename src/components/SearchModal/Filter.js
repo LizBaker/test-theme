@@ -5,6 +5,13 @@ import Icon from '../Icon';
 import { css } from '@emotion/react';
 
 const Filters = ({ onClick, filters = [] }) => {
+  const getFilterName = (filter) => {
+    if (filter.name === 'body') {
+      return 'content';
+    }
+    return filter.name.replace('_', ' ');
+  };
+
   return (
     <>
       {filters.map((filter) => (
@@ -14,14 +21,14 @@ const Filters = ({ onClick, filters = [] }) => {
           css={css`
             margin-bottom: 0.15rem;
             ${filter.isSelected &&
-            `color: var(--text-color);
-        cursor: pointer;
-        background: var(--color-neutrals-200);
-        border-radius: 0.25rem;
+            `cursor: pointer;
+              background: var(--system-background-muted-light);
+              border-radius: 0.25rem;
 
-        .dark-mode & {
-          background: var(--color-dark-200);
-        }`}
+              .dark-mode & {
+                background: var(--system-background-selected-low-contrast-dark);
+              }
+            `}
           `}
         >
           <div
@@ -40,7 +47,7 @@ const Filters = ({ onClick, filters = [] }) => {
                 margin-right: 0.5rem;
               `}
             >
-              {filter.name.replace('_', ' ')}
+              {getFilterName(filter)}
             </div>
             <div
               css={css`

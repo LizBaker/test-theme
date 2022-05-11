@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
-import Logo from './Logo';
 import ExternalLink from './ExternalLink';
 import { graphql, useStaticQuery } from 'gatsby';
 import { css } from '@emotion/react';
-import CreateIssueButton from './CreateIssueButton';
-import EditPageButton from './EditPageButton';
 import useThemeTranslation from '../hooks/useThemeTranslation';
 import Trans from './Trans';
 import Link from './Link';
-import useLocale from '../hooks/useLocale';
 
 // We need to use this as a JS value otherwise the HTML entity gets saved in the
 // string and escaped by React, therefore rendering the literal &copy; text in
@@ -18,30 +13,15 @@ import useLocale from '../hooks/useLocale';
 const copyrightSymbol = String.fromCharCode(169);
 const year = new Date().getFullYear();
 
-const GlobalFooter = ({
-  fileRelativePath,
-  className,
-  pageTitle,
-  issueLabels,
-}) => {
+const GlobalFooter = ({ className }) => {
   const { t } = useThemeTranslation();
-  const { site, sitePage } = useStaticQuery(graphql`
+  const { sitePage } = useStaticQuery(graphql`
     query FooterQuery {
-      site {
-        siteMetadata {
-          siteUrl
-          repository
-        }
-      }
       sitePage(path: { eq: "/terms" }) {
         id
       }
     }
   `);
-  const { locale } = useLocale();
-
-  const { siteMetadata } = site;
-  const { repository } = siteMetadata;
 
   return (
     <footer
@@ -58,64 +38,6 @@ const GlobalFooter = ({
         }
       `}
     >
-      <div
-        css={css`
-          font-size: 0.75rem;
-          align-items: center;
-          justify-content: space-between;
-          display: flex;
-          padding: 1rem var(--site-content-padding);
-          max-width: var(--site-max-width);
-          margin: 0 auto;
-
-          @media screen and (max-width: 550px) {
-            flex-direction: column;
-            justify-content: center;
-          }
-        `}
-      >
-        <Link to="/">
-          <Logo
-            width="150px"
-            css={css`
-              display: block;
-              .text-color {
-                fill: var(--system-text-primary-dark);
-              }
-              .hexagon-color {
-                fill: var(--system-text-primary-dark);
-              }
-              @media screen and (max-width: 550px) {
-                margin-bottom: 1rem;
-              }
-            `}
-          />
-        </Link>
-        <div>
-          {repository && (
-            <CreateIssueButton
-              pageTitle={pageTitle}
-              variant={Button.VARIANT.OUTLINE}
-              size={Button.SIZE.SMALL}
-              labels={issueLabels}
-              instrumentation={{ component: 'GlobalFooter' }}
-              css={css`
-                margin-right: 0.5rem;
-              `}
-            />
-          )}
-
-          {repository && fileRelativePath && locale === 'en' && (
-            <EditPageButton
-              fileRelativePath={fileRelativePath}
-              variant={Button.VARIANT.OUTLINE}
-              size={Button.SIZE.SMALL}
-              instrumentation={{ component: 'GlobalFooter' }}
-            />
-          )}
-        </div>
-      </div>
-
       <div>
         <div
           css={css`
@@ -196,10 +118,7 @@ const GlobalFooter = ({
 };
 
 GlobalFooter.propTypes = {
-  fileRelativePath: PropTypes.string,
   className: PropTypes.string,
-  pageTitle: PropTypes.string,
-  issueLabels: CreateIssueButton.propTypes.labels,
 };
 
 export default GlobalFooter;

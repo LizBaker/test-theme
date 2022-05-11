@@ -24,16 +24,19 @@ const Menu = ({ children, className }) => {
       css={css`
         --arrow-size: 5px;
         --arrow-offset: 0.5rem;
-        --background-color: var(--secondary-background-color);
 
         position: absolute;
         top: calc(100% + var(--arrow-size));
         display: ${open ? 'block' : 'none'};
-        background: var(--background-color);
+        background: var(--secondary-background-color);
         border-radius: 0.25rem;
         z-index: 1000;
         padding: 0.5rem;
         box-shadow: 0 3px 8px 0 rgba(22, 38, 59, 0.2);
+
+        .dark-mode & {
+          background-color: var(--primary-hover-color);
+        }
 
         &::before {
           content: '';

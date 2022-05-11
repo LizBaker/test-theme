@@ -160,11 +160,11 @@ const CodeBlock = ({
           {(copyable || fileName) && (
             <div
               css={css`
-                color: var(--color-nord-6);
+                color: var(--color-comment);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                background: var(--color-nord-1);
+                background: var(--color-background);
                 border-bottom-left-radius: 4px;
                 border-bottom-right-radius: 4px;
                 padding: 0 1rem;

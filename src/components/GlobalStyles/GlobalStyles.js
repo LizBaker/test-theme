@@ -40,18 +40,9 @@ const GlobalStyles = ({ layout }) => (
       a {
         cursor: pointer;
         color: var(--link-color);
-        padding: 2px;
-        transition: background 200ms ease-in, color 200ms ease-in;
-
-        &:visited {
-          color: var(--secondary-text-color);
-        }
 
         &:hover {
-          background: var(--primary-hover-color);
-          border-radius: 4px;
-          color: var(--link-color);
-          transition: background 200ms ease-in, color 200ms ease-in;
+          color: var(--link-hover-color);
         }
       }
 

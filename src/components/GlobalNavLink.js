@@ -4,7 +4,13 @@ import { css } from '@emotion/react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import ExternalLink from './ExternalLink';
 
-const GlobalNavLink = ({ children, href, activeSite, instrumentation }) => {
+const GlobalNavLink = ({
+  children,
+  href,
+  activeSite,
+  instrumentation,
+  className,
+}) => {
   const {
     site: {
       siteMetadata: { siteUrl },
@@ -44,6 +50,7 @@ const GlobalNavLink = ({ children, href, activeSite, instrumentation }) => {
         transition: 0.2s;
         text-decoration: none;
       `}
+      className={className}
       instrumentation={{
         ...instrumentation,
         navInteractionType: 'globalNavLinkClick',
@@ -56,6 +63,7 @@ const GlobalNavLink = ({ children, href, activeSite, instrumentation }) => {
 
 GlobalNavLink.propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
   href: PropTypes.string.isRequired,
   activeSite: PropTypes.shape({
     text: PropTypes.string.isRequired,

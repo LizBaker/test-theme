@@ -21,8 +21,9 @@ export default css`
     --button-text-color: var(--color-white);
 
     --accent-text-color: var(--secondary-text-color);
-    --link-color: var(--primary-text-color);
-    --border-color: var(--system-border-regular-light);
+    --link-color: var(--interactive-link-light);
+    --link-hover-color: #074382;
+    --border-color: var(--system-border-strong-light);
     --divider-color: var(--system-background-selected-low-contrast-light);
     --heading-text-color: var(--primary-text-color);
 
@@ -37,7 +38,7 @@ export default css`
 
     *:not(pre) > code,
     var {
-      background: var(--primary-hover-color);
+      background: var(--system-background-muted-light);
     }
   }
 
@@ -58,7 +59,8 @@ export default css`
     --button-outline-color: var(--color-white);
 
     --accent-text-color: var(--secondary-text-color);
-    --link-color: var(--primary-text-color);
+    --link-color: var(--interactive-link-dark);
+    --link-hover-color: var(--interactive-link-light);
     --border-color: var(--system-border-regular-dark);
     --divider-color: var(--primary-contrast-color);
     --heading-text-color: var(--primary-text-color);

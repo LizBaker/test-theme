@@ -235,7 +235,11 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
               css={css`
                 display: flex;
                 align-items: center;
-                margin-right: 1rem;
+                width: 267px;
+
+                @media screen and (max-width: 1100px) {
+                  width: 130px;
+                }
 
                 @media screen and (max-width: ${NAV_BREAKPOINT}) {
                   display: none;
@@ -302,9 +306,15 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
                 -webkit-overflow-scrolling: touch;
                 -ms-overflow-style: -ms-autohiding-scrollbar;
 
-                > li {
-                  margin: 0;
-                  flex: 0 0 auto;
+                li {
+                  > a {
+                    font-size: 0.85rem;
+                  }
+                  &:first-child {
+                    > a {
+                      padding-left: 0px;
+                    }
+                  }
                 }
 
                 @media screen and (max-width: ${NAV_BREAKPOINT}) {
@@ -324,11 +334,9 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
               display: flex;
               list-style-type: none;
               align-items: center;
-              flex: 1;
 
               > li {
                 transition: all 0.2s ease-out;
-                color: var(--secondary-text-color);
 
                 &:not(:first-of-type) {
                   margin-left: 0.5rem;
@@ -342,7 +350,6 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
           >
             <li
               css={css`
-                flex: 1;
                 margin: 0rem 1rem;
 
                 @media screen and (max-width: ${CONDENSED_BREAKPOINT}) {
@@ -359,7 +366,7 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
                     css={css`
                       --icon-size: 1.5rem;
                       min-width: 150px;
-                      max-width: 350px;
+                      max-width: 450px;
 
                       svg {
                         width: 1.5rem;

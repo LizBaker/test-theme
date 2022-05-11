@@ -204,7 +204,7 @@ const Input = forwardRef(
             )}
             <Button
               variant={Button.VARIANT.PLAIN}
-              size={Button.SIZE.EXTRA_SMALL}
+              size={Button.SIZE.MEDIUM}
               onClick={onCancel}
             >
               Cancel

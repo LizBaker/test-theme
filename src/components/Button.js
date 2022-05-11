@@ -32,6 +32,7 @@ const styles = {
       background-color: var(--brand-button-primary-accent);
 
       &:hover {
+        color: var(--color-black);
         background-color: var(--brand-button-primary-accent-hover);
       }
     `,
@@ -44,8 +45,10 @@ const styles = {
       background-color: var(--button-background-color);
 
       &:hover {
+        color: var(--button-text-color);
         background: var(--color-black);
         .dark-mode & {
+          color: var(--button-text-color);
           background: #d0d6d7;
         }
       }
