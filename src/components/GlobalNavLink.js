@@ -49,6 +49,10 @@ const GlobalNavLink = ({
 
         transition: 0.2s;
         text-decoration: none;
+
+        &:hover {
+          color: var(--system-text-secondary-dark);
+        }
       `}
       className={className}
       instrumentation={{

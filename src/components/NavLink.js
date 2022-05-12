@@ -45,6 +45,10 @@ const NavLink = ({
         text-decoration: none;
         border-radius: 0.25rem;
 
+        &:hover {
+          color: var(--secondary-text-color);
+        }
+
         ${mobileBreakpoint &&
         css`
           @media screen and (max-width: ${mobileBreakpoint}) {

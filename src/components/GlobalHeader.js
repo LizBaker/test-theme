@@ -121,7 +121,12 @@ const useSearchQuery = () => {
   return [searchTerm, setSearchTerm];
 };
 
-const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
+const GlobalHeader = ({
+  className,
+  activeSite,
+  hideSearch = false,
+  sidebarWidth,
+}) => {
   const hasMounted = useHasMounted();
   const location = useLocation();
   const { queryParams, setQueryParam, deleteQueryParam } = useQueryParams();
@@ -235,7 +240,6 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
               css={css`
                 display: flex;
                 align-items: center;
-                width: 267px;
 
                 @media screen and (max-width: 1100px) {
                   width: 130px;
@@ -251,10 +255,10 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
               }}
             >
               <NewRelicLogo
-                size="104px"
+                size="150px"
                 css={css`
                   .text-color {
-                    fill: var(--system-text-primary-dark);
+                    fill: var(--color-white);
                   }
                 `}
               />
@@ -305,6 +309,7 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
                 position: relative;
                 -webkit-overflow-scrolling: touch;
                 -ms-overflow-style: -ms-autohiding-scrollbar;
+                margin-left: ${sidebarWidth || '120px'};
 
                 li {
                   > a {
@@ -315,6 +320,9 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
                       padding-left: 0px;
                     }
                   }
+                }
+                @media screen and (max-width: 1200px) {
+                  margin-left: 2rem;
                 }
 
                 @media screen and (max-width: ${NAV_BREAKPOINT}) {
@@ -334,11 +342,13 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
               display: flex;
               list-style-type: none;
               align-items: center;
-
+              justify-content: flex-end;
+              width: 60%;
+              background: var(--system-text-primary-light);
               > li {
                 transition: all 0.2s ease-out;
 
-                &:not(:first-of-type) {
+                &:not(:first-of-type) &:not(:last-of-type) {
                   margin-left: 0.5rem;
                 }
               }
@@ -351,6 +361,8 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
             <li
               css={css`
                 margin: 0rem 1rem;
+                width: 100%;
+                max-width: 450px;
 
                 @media screen and (max-width: ${CONDENSED_BREAKPOINT}) {
                   flex: unset;
@@ -480,6 +492,7 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
               </Button>
               <SplitTextButton
                 css={css`
+                  padding-right: 0;
                   span {
                     color: var(--brand-button-primary-accent);
                   }
@@ -500,6 +513,7 @@ const GlobalHeader = ({ className, activeSite, hideSearch = false }) => {
 
 GlobalHeader.propTypes = {
   className: PropTypes.string,
+  sidebarWidth: PropTypes.string,
   activeSite: PropTypes.oneOf(Object.values(NR_SITES)),
   hideSearch: PropTypes.bool,
 };

@@ -27,7 +27,7 @@ const SimpleFeedback = () => {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        background: var(--primary-hover-color);
+        background: var(--border-color);
         padding: 0.5rem 1rem;
         gap: 1rem;
 
@@ -35,9 +35,6 @@ const SimpleFeedback = () => {
           > :first-of-type {
             margin-right: 1rem;
           }
-        }
-        .dark-mode & {
-          background: var(--primary-contrast-color);
         }
       `}
     >
@@ -77,12 +74,19 @@ const SimpleFeedback = () => {
               variant={Button.VARIANT.LINK}
               size={Button.SIZE.EXTRA_SMALL}
               onClick={() => handleClick('Positive')}
+              css={css`
+                color: var(--primary-text-color);
+                &:hover {
+                  color: var(--secondary-text-color);
+                }
+              `}
             >
               <Icon
                 size="0.75rem"
                 name="fe-thumbsup"
                 css={css`
                   margin-right: 0.5rem;
+                  color: var(--primary-text-color);
                 `}
               />
               {t('feedback.positive')}
@@ -91,12 +95,19 @@ const SimpleFeedback = () => {
               variant={Button.VARIANT.LINK}
               size={Button.SIZE.EXTRA_SMALL}
               onClick={() => handleClick('Negative')}
+              css={css`
+                color: var(--primary-text-color);
+                &:hover {
+                  color: var(--secondary-text-color);
+                }
+              `}
             >
               <Icon
                 size="0.75rem"
                 name="fe-thumbsdown"
                 css={css`
                   margin-right: 0.5rem;
+                  color: var(--primary-text-color);
                 `}
               />
               {t('feedback.negative')}
