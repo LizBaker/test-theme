@@ -16,7 +16,6 @@ import { useLocation } from '@reach/router';
 import useQueryParams from '../hooks/useQueryParams';
 import useThemeTranslation from '../hooks/useThemeTranslation';
 import path from 'path';
-import { rgba } from 'polished';
 import SearchModal from './SearchModal';
 import { useDebounce } from 'react-use';
 import useHasMounted from '../hooks/useHasMounted';
@@ -82,11 +81,9 @@ const createNavList = (listType, activeSite = null) => {
   return navList;
 };
 
-// hides searchbar
-const CONDENSED_BREAKPOINT = '815px';
-
+// removes the site nav from the header in favor of the search bar
 // swaps out logo into collapsable nav
-const NAV_BREAKPOINT = '770px';
+const NAV_BREAKPOINT = '1070px';
 
 const useSearchQuery = () => {
   const { queryParams, setQueryParam } = useQueryParams();
@@ -125,7 +122,7 @@ const GlobalHeader = ({
   className,
   activeSite,
   hideSearch = false,
-  sidebarWidth,
+  customStyles,
 }) => {
   const hasMounted = useHasMounted();
   const location = useLocation();
@@ -208,31 +205,6 @@ const GlobalHeader = ({
               height: 100%;
               overflow: hidden;
               position: relative;
-
-              @media screen and (max-width: 1235px) {
-                &::after {
-                  content: '';
-                  position: absolute;
-                  right: 0;
-                  height: 100%;
-                  width: 2rem;
-                  pointer-events: none;
-                  background: linear-gradient(
-                    to right,
-                    ${rgba('#f4f5f5', 0)},
-                    var(--system-text-primary-light)
-                  );
-                }
-              }
-
-              @media screen and (max-width: ${NAV_BREAKPOINT}) {
-                overflow: visible;
-
-                &::after {
-                  background: none !important;
-                  width: 0 !important;
-                }
-              }
             `}
           >
             <ExternalLink
@@ -240,10 +212,6 @@ const GlobalHeader = ({
               css={css`
                 display: flex;
                 align-items: center;
-
-                @media screen and (max-width: 1100px) {
-                  width: 130px;
-                }
 
                 @media screen and (max-width: ${NAV_BREAKPOINT}) {
                   display: none;
@@ -283,10 +251,10 @@ const GlobalHeader = ({
                 `}
               >
                 <NewRelicLogo
-                  size={hideLogoText ? '24px' : '104px'}
+                  size={hideLogoText ? '24px' : '150px'}
                   css={css`
                     .text-color {
-                      fill: var(--system-text-primary-dark);
+                      fill: var(--color-white);
                     }
                   `}
                   omitText={hideLogoText}
@@ -305,15 +273,12 @@ const GlobalHeader = ({
                 display: flex;
                 list-style-type: none;
                 white-space: nowrap;
-                overflow-x: auto;
                 position: relative;
-                -webkit-overflow-scrolling: touch;
-                -ms-overflow-style: -ms-autohiding-scrollbar;
-                margin-left: ${sidebarWidth || '120px'};
+                margin-left: ${customStyles.navLeftMargin || '120px'};
 
                 li {
                   > a {
-                    font-size: 0.85rem;
+                    font-size: 18px;
                   }
                   &:first-child {
                     > a {
@@ -343,8 +308,9 @@ const GlobalHeader = ({
               list-style-type: none;
               align-items: center;
               justify-content: flex-end;
-              width: 60%;
               background: var(--system-text-primary-light);
+              flex: 1;
+
               > li {
                 transition: all 0.2s ease-out;
 
@@ -352,20 +318,20 @@ const GlobalHeader = ({
                   margin-left: 0.5rem;
                 }
               }
-
-              @media screen and (max-width: ${CONDENSED_BREAKPOINT}) {
-                flex: unset;
-              }
             `}
           >
             <li
               css={css`
                 margin: 0rem 1rem;
                 width: 100%;
-                max-width: 450px;
+                max-width: 320px;
+                margin-right: ${customStyles.searchRightMargin || '1rem'};
 
-                @media screen and (max-width: ${CONDENSED_BREAKPOINT}) {
-                  flex: unset;
+                @media screen and (max-width: 930px) {
+                  margin-right: 1rem;
+                }
+                @media screen and (max-width: ${mobileBreakpoint}) {
+                  display: none;
                 }
               `}
             >
@@ -374,12 +340,10 @@ const GlobalHeader = ({
                   <SearchInput
                     placeholder={t('searchInput.placeholder')}
                     size={SearchInput.SIZE.MEDIUM}
-                    focusWithHotKey="/"
                     css={css`
                       --icon-size: 1.5rem;
                       min-width: 150px;
                       max-width: 450px;
-
                       svg {
                         width: 1.5rem;
                         height: 1.5rem;
@@ -388,16 +352,6 @@ const GlobalHeader = ({
                       input {
                         border: none;
                         height: 40px;
-                      }
-
-                      .search-hotkey {
-                        border-radius: 0.125rem;
-                        font-size: 0.875rem;
-                        padding: 0.125rem 0.375rem;
-                      }
-
-                      @media screen and (max-width: ${CONDENSED_BREAKPOINT}) {
-                        display: none;
                       }
                     `}
                     onFocus={() => {
@@ -413,6 +367,32 @@ const GlobalHeader = ({
                 flex-direction: row;
               `}
             >
+              <Link
+                to="?q="
+                css={css`
+                  color: var(--system-text-primary-dark);
+                  transition: all 0.2s ease-out;
+                  align-self: center;
+                  padding-right: 1rem;
+                  display: none;
+
+                  @media screen and (max-width: ${mobileBreakpoint}) {
+                    display: block;
+                  }
+                  @media screen and (max-width: ${mobileBreakpoint}) {
+                    padding-right: 0.25rem;
+                  }
+                `}
+              >
+                <Icon
+                  css={css`
+                    cursor: pointer;
+                    display: block;
+                  `}
+                  name="fe-search"
+                  size="1.5rem"
+                />
+              </Link>
               {locales.length > 1 && (
                 <Dropdown align="right">
                   <Dropdown.Toggle
@@ -448,15 +428,13 @@ const GlobalHeader = ({
                 </Dropdown>
               )}
               <DarkModeToggle
-                css={[
-                  css`
-                    font-size: 0.75rem;
-                    @media screen and (max-width: 450px) {
-                      margin: 0;
-                    }
-                    color: var(--system-text-primary-dark);
-                  `,
-                ]}
+                css={css`
+                  font-size: 0.75rem;
+                  @media screen and (max-width: ${mobileBreakpoint}) {
+                    margin: 0;
+                  }
+                  color: var(--system-text-primary-dark);
+                `}
                 size="27px"
               />
             </li>
@@ -475,6 +453,7 @@ const GlobalHeader = ({
                 href="https://one.newrelic.com"
                 css={css`
                   white-space: nowrap;
+                  font-size: 18px;
                   span {
                     color: var(--system-text-primary-dark);
                   }
@@ -493,8 +472,12 @@ const GlobalHeader = ({
               <SplitTextButton
                 css={css`
                   padding-right: 0;
+                  font-size: 18px;
                   span {
                     color: var(--brand-button-primary-accent);
+                  }
+                  @media screen and (max-width: ${mobileBreakpoint}) {
+                    /* padding-right: 1rem; */
                   }
                 `}
               />
@@ -513,7 +496,10 @@ const GlobalHeader = ({
 
 GlobalHeader.propTypes = {
   className: PropTypes.string,
-  sidebarWidth: PropTypes.string,
+  customStyles: PropTypes.shape({
+    navLeftMargin: PropTypes.string,
+    searchRightMargin: PropTypes.string,
+  }),
   activeSite: PropTypes.oneOf(Object.values(NR_SITES)),
   hideSearch: PropTypes.bool,
 };

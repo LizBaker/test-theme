@@ -1,6 +1,8 @@
 const ENDPOINT =
   'https://search-api.swiftype.com/api/v1/public/engines/search.json';
 
+const DEFAULT_SOURCES = ['developer', 'docs', 'opensource', 'quickstarts'];
+
 const search = async ({ searchTerm, filters = [], perPage = 10, page = 1 }) => {
   const { searchBy, source } = filters.reduce(
     (acc, { type, defaultFilters }) => ({
@@ -14,7 +16,7 @@ const search = async ({ searchTerm, filters = [], perPage = 10, page = 1 }) => {
     filter.isSelected ? `${filter.name}^10` : `${filter.name}^0`
   );
 
-  const sourceFilters = { type: source };
+  const sourceFilters = { type: source.length > 0 ? source : DEFAULT_SOURCES };
   const res = await fetch(ENDPOINT, {
     method: 'POST',
     headers: {

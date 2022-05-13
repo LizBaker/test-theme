@@ -49,6 +49,11 @@ const DarkModeToggle = ({ className, size, onClick }) => {
           onClick(e);
         }
       }}
+      css={css`
+        @media screen and (max-width: 450px) {
+          padding: 0;
+        }
+      `}
     >
       <Icon
         name="nr-dark-mode"
