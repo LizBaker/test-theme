@@ -274,7 +274,7 @@ const GlobalHeader = ({
                 list-style-type: none;
                 white-space: nowrap;
                 position: relative;
-                margin-left: ${customStyles.navLeftMargin || '120px'};
+                margin-left: ${customStyles?.navLeftMargin || '120px'};
 
                 li {
                   > a {
@@ -325,7 +325,7 @@ const GlobalHeader = ({
                 margin: 0rem 1rem;
                 width: 100%;
                 max-width: 320px;
-                margin-right: ${customStyles.searchRightMargin || '1rem'};
+                margin-right: ${customStyles?.searchRightMargin || '1rem'};
 
                 @media screen and (max-width: 930px) {
                   margin-right: 1rem;
