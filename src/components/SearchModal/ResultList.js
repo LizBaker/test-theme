@@ -1,9 +1,12 @@
+/* eslint react/no-unused-prop-types: 0 */
+
 import React, { memo, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
+
 import Result from './Result';
 import useKeyPress from '../../hooks/useKeyPress';
 
-const ResultList = memo(({ results, selectedIndex, onSelectIndex }) => {
+const ResultList = ({ results, selectedIndex, onSelectIndex }) => {
   const selectedRef = useRef();
 
   const handleSelect = useCallback(
@@ -44,7 +47,7 @@ const ResultList = memo(({ results, selectedIndex, onSelectIndex }) => {
       />
     );
   });
-});
+};
 
 ResultList.propTypes = {
   results: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -52,4 +55,4 @@ ResultList.propTypes = {
   onSelectIndex: PropTypes.func.isRequired,
 };
 
-export default ResultList;
+export default memo(ResultList);

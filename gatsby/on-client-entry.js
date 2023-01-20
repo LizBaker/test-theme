@@ -9,17 +9,40 @@ const onClientEntry = (_, themeOptions) => {
     window.newrelic.setCustomAttribute('mode', mode);
     window.newrelic.setCustomAttribute('locale', locale);
   }
+
+  if (themeOptions.signup && themeOptions.tessen.segmentWriteKey) {
+    window._nr_signup = {
+      environment: `${themeOptions.signup.environment}`,
+      reCaptchaToken: `${themeOptions.signup.reCaptchaToken}`,
+      signupReceiverUrl: `${themeOptions.signup.signupUrl}`,
+      segmentKey: `${themeOptions.tessen.segmentWriteKey}`,
+    };
+  }
+  if (themeOptions.feedback && themeOptions.tessen.segmentWriteKey) {
+    window._nr_feedback = {
+      environment: `${themeOptions.feedback.environment}`,
+      reCaptchaToken: `${themeOptions.feedback.reCaptchaToken}`,
+      segmentKey: `${themeOptions.tessen.segmentWriteKey}`,
+    };
+  }
+
+  if (themeOptions.newRelicRequestingServicesHeader) {
+    window.newRelicRequestingServicesHeader =
+      themeOptions.newRelicRequestingServicesHeader;
+  }
 };
 
 const isDarkMode = () => {
   if (isLocalStorageAvailable()) {
     const localStorageTheme = localStorage.getItem('darkMode');
-
-    if (localStorageTheme) {
+    if (localStorageTheme === 'true' || localStorageTheme === 'false') {
       return JSON.parse(localStorageTheme);
     }
   }
-
+  window.localStorage.setItem(
+    'darkMode',
+    document.body.classList.contains('dark-mode')
+  );
   return document.body.classList.contains('dark-mode');
 };
 

@@ -21,6 +21,7 @@ const GlobalStyles = ({ layout }) => (
 
         --site-max-width: ${layout.maxWidth};
         --site-content-padding: ${layout.contentPadding};
+        --sidebar-width: ${layout.sidebarWidth};
       }
 
       ${themes}
@@ -125,9 +126,16 @@ const GlobalStyles = ({ layout }) => (
       }
 
       ul > li::marker {
-        color: var(--system-text-secondary-inverted-light);
+        color: var(--system-text-secondary-light);
         .dark-mode & {
-          color: var(--system-background-selected-low-contrast-dark);
+          color: var(--system-text-secondary-dark);
+        }
+      }
+
+      ul ul li::marker {
+        color: var(--color-black);
+        .dark-mode & {
+          color: var(--color-white);
         }
       }
 
@@ -187,6 +195,9 @@ const GlobalStyles = ({ layout }) => (
       .gatsby-resp-image-background-image {
         border-radius: 0.25rem;
       }
+      .grecaptcha-badge {
+        visibility: hidden;
+      }
     `}
   />
 );
@@ -195,6 +206,7 @@ GlobalStyles.propTypes = {
   layout: PropTypes.shape({
     contentPadding: PropTypes.string,
     maxWidth: PropTypes.string,
+    sidebarWidth: PropTypes.string,
   }),
 };
 

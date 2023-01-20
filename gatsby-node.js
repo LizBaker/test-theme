@@ -1,6 +1,6 @@
 const path = require('path');
-const fs = require('fs');
 const { createFilePath } = require('gatsby-source-filesystem');
+const fs = require('fs');
 const { withDefaults } = require('./src/utils/defaultOptions');
 const createRelatedResourceNode = require('./src/utils/related-resources/createRelatedResourceNode');
 const getRelatedResources = require('./src/utils/related-resources/fetchRelatedResources');
@@ -23,7 +23,7 @@ const ANNOUNCEMENTS_DIRECTORY = 'src/announcements';
 const DEFAULT_BRANCH = 'main';
 
 exports.onPreInit = (_, themeOptions) => {
-  const { i18n, relatedResources = {}, tessen } = themeOptions;
+  const { i18n, relatedResources = {}, tessen, signup } = themeOptions;
 
   if (i18n && !i18n.translationsPath) {
     throw new Error(
@@ -37,6 +37,9 @@ exports.onPreInit = (_, themeOptions) => {
 
   if (tessen) {
     validateTessenOptions(tessen);
+  }
+  if (signup) {
+    validateSignupOptions(signup);
   }
 };
 
@@ -150,6 +153,8 @@ exports.sourceNodes = (
     tessen: tessen
       ? { product: tessen.product, subproduct: tessen.subproduct }
       : null,
+    signup: themeOptions.signup,
+    feedback: themeOptions.feedback,
   };
 
   createNode({
@@ -224,17 +229,37 @@ exports.onCreateBabelConfig = ({ actions }, themeOptions) => {
     name: 'babel-plugin-prismjs',
     options: {
       languages: uniq([
+        'markup',
+        'bash',
+        'clike',
+        'c',
+        'cpp',
         'css',
-        'hcl',
+        'css-extras',
         'javascript',
-        'json',
         'jsx',
-        'ruby',
-        'shell',
-        'sql',
+        'js-extras',
+        'coffeescript',
+        'diff',
+        'git',
+        'go',
         'graphql',
+        'handlebars',
+        'json',
+        'less',
+        'makefile',
+        'markdown',
+        'objectivec',
+        'ocaml',
+        'python',
+        'reason',
         'sass',
         'scss',
+        'sql',
+        'stylus',
+        'tsx',
+        'typescript',
+        'wasm',
         'yaml',
         ...(prism.languages || []),
       ]),
@@ -276,7 +301,11 @@ exports.onCreatePage = (helpers, themeOptions) => {
   }
 
   if (
-    !transformedPage.path.match(/404/) &&
+    !(
+      page.internalComponentName === 'Component/404.html' ||
+      page.internalComponentName === 'Component/dev-404-page/' ||
+      page.internalComponentName === 'Component/404/'
+    ) &&
     transformedPage.context.fileRelativePath.includes('src/pages/') &&
     transformedPage.context.locale === 'en'
   ) {
@@ -292,7 +321,12 @@ exports.onCreatePage = (helpers, themeOptions) => {
     });
   }
 
-  if (page.path.match(/404/) && !page.context.layout) {
+  if (
+    (page.internalComponentName === 'Component/404.html' ||
+      page.internalComponentName === 'Component/dev-404-page/' ||
+      page.internalComponentName === 'Component/404/') &&
+    !page.context.layout
+  ) {
     deletePage(page);
     createPage({
       ...page,
@@ -470,6 +504,26 @@ const validateTessenOptions = (tessenOptions) => {
   if (!segmentWriteKey) {
     throw new Error(
       "You have enabled Tessen, but the 'segmentWriteKey' is missing. Please define a 'tessen.segmentWriteKey' option"
+    );
+  }
+};
+
+const validateSignupOptions = (signupOptions) => {
+  const { environment, reCaptchaToken, signupUrl } = signupOptions;
+
+  if (!environment) {
+    throw new Error(
+      "You have enabled sign ups, but the 'environment' is missing. Please define a 'signup.environment' option"
+    );
+  }
+  if (!reCaptchaToken) {
+    throw new Error(
+      "You have enabled sign ups, but the 'reCaptchaToken' is missing. Please define a 'signup.reCaptchaToken' option"
+    );
+  }
+  if (!signupUrl) {
+    throw new Error(
+      "You have enabled sign ups, but the 'signupUrl' is missing. Please define a 'signup.signupUrl' option"
     );
   }
 };

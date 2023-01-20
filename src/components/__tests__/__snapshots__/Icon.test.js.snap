@@ -233,6 +233,37 @@ exports[`fe-corner-down-left icon matches its snapshot 1`] = `
 </svg>
 `;
 
+exports[`fe-download icon matches its snapshot 1`] = `
+.emotion-0 {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+<svg
+  className="emotion-0"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+  />
+  <polyline
+    points="7 10 12 15 17 10"
+  />
+  <line
+    x1="12"
+    x2="12"
+    y1="15"
+    y2="3"
+  />
+</svg>
+`;
+
 exports[`fe-edit icon matches its snapshot 1`] = `
 .emotion-0 {
   width: 1em;
@@ -329,6 +360,45 @@ exports[`fe-github icon matches its snapshot 1`] = `
 >
   <path
     d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+  />
+</svg>
+`;
+
+exports[`fe-info icon matches its snapshot 1`] = `
+.emotion-0 {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+<svg
+  className="emotion-0"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <circle
+    cx="12"
+    cy="12"
+    r="10"
+    stroke="#0095a9"
+  />
+  <line
+    stroke="#0095a9"
+    x1="12"
+    x2="12"
+    y1="16"
+    y2="12"
+  />
+  <line
+    stroke="#0095a9"
+    x1="12"
+    x2="12.01"
+    y1="8"
+    y2="8"
   />
 </svg>
 `;
@@ -834,29 +904,28 @@ exports[`logo-newrelic icon matches its snapshot 1`] = `
 .emotion-2 {
   width: 1em;
   height: 1em;
-  fill: none;
 }
 
 .emotion-0 {
-  fill: #008c99;
-}
-
-.emotion-1 {
-  fill: #70ccd3;
+  fill: var(--primary-text-color);
 }
 
 <svg
   className="emotion-2"
-  viewBox="0 0 18 15"
+  viewBox="0 0 32 32"
   xmlns="http://www.w3.org/2000/svg"
 >
   <path
-    className="emotion-0"
-    d="M17.159 5.6486C16.3489 1.92142 11.8784 -0.271419 7.17568 0.751833C2.47296 1.77403 -0.682686 5.62527 0.127433 9.3514C0.937552 13.0786 5.40805 15.2714 10.1108 14.2482C14.8135 13.226 17.9691 9.37578 17.159 5.6486ZM8.64322 10.9356C6.74517 10.9356 5.20764 9.39699 5.20764 7.5C5.20764 5.603 6.74623 4.06441 8.64322 4.06441C10.5402 4.06441 12.0788 5.60194 12.0788 7.5C12.0788 9.39805 10.5402 10.9356 8.64322 10.9356Z"
+    d="M23.2043 11.0778V20.9232L14.6196 25.8469V32.0005L28.5741 24.001V8L23.2043 11.0778Z"
+    fill="#00AC69"
   />
   <path
-    className="emotion-1"
-    d="M9.40328 2.69022C6.6792 2.69022 4.47046 4.89896 4.47046 7.62303C4.47046 10.3471 6.6792 12.5559 9.40328 12.5559C12.1284 12.5559 14.3372 10.3471 14.3372 7.62303C14.3361 4.89896 12.1274 2.69022 9.40328 2.69022ZM8.64299 10.5009C6.98564 10.5009 5.64216 9.15738 5.64216 7.50003C5.64216 5.84268 6.98564 4.4992 8.64299 4.4992C10.3003 4.4992 11.6438 5.84268 11.6438 7.50003C11.6438 9.15738 10.3003 10.5009 8.64299 10.5009Z"
+    d="M14.6209 6.15563L23.2056 11.0773L28.5754 7.9995L14.6209 0L0.666504 7.9995L6.03422 11.0773L14.6209 6.15563Z"
+    fill="#1CE783"
+  />
+  <path
+    className="text-color emotion-0 emotion-1"
+    d="M9.25323 19.0793V28.9247L14.6209 32.0005V16.0015L0.666504 8V14.1556L9.25323 19.0793Z"
   />
 </svg>
 `;
@@ -949,7 +1018,7 @@ exports[`nr-ai icon matches its snapshot 1`] = `
 </svg>
 `;
 
-exports[`nr-dark-mode icon matches its snapshot 1`] = `
+exports[`nr-dark-mode-toggle icon matches its snapshot 1`] = `
 .emotion-0 {
   width: 1em;
   height: 1em;
@@ -967,14 +1036,17 @@ exports[`nr-dark-mode icon matches its snapshot 1`] = `
   xmlns="http://www.w3.org/2000/svg"
 >
   <path
-    d="M12.9999 20.0722C11.1242 20.0722 9.3254 19.3271 7.99912 18.0008C6.67283 16.6745 5.92773 14.8757 5.92773 13C5.92773 11.1244 6.67283 9.32553 7.99912 7.99924C9.3254 6.67296 11.1242 5.92786 12.9999 5.92786L12.9999 13L12.9999 20.0722Z"
+    d="M13.0001 20.0722C14.8758 20.0722 16.6746 19.3271 18.0009 18.0008C19.3272 16.6745 20.0723 14.8757 20.0723 13C20.0723 11.1244 19.3272 9.32553 18.0009 7.99924C16.6746 6.67296 14.8758 5.92786 13.0001 5.92786V13L13.0001 20.0722Z"
+    fill="#F3F4F4"
   />
   <circle
     cx="12.9999"
     cy="13"
     r="7.57215"
+    stroke="#F3F4F4"
   />
   <line
+    stroke="#F3F4F4"
     strokeLinecap="round"
     x1="13.1826"
     x2="13.1826"
@@ -982,6 +1054,7 @@ exports[`nr-dark-mode icon matches its snapshot 1`] = `
     y2="2.76407"
   />
   <line
+    stroke="#F3F4F4"
     strokeLinecap="round"
     x1="25.6125"
     x2="23.3485"
@@ -989,6 +1062,7 @@ exports[`nr-dark-mode icon matches its snapshot 1`] = `
     y2="13.106"
   />
   <line
+    stroke="#F3F4F4"
     strokeLinecap="round"
     x1="13.106"
     x2="13.106"
@@ -996,6 +1070,7 @@ exports[`nr-dark-mode icon matches its snapshot 1`] = `
     y2="25.6126"
   />
   <line
+    stroke="#F3F4F4"
     strokeLinecap="round"
     x1="22.0242"
     x2="20.4232"
@@ -1003,6 +1078,7 @@ exports[`nr-dark-mode icon matches its snapshot 1`] = `
     y2="5.86798"
   />
   <line
+    stroke="#F3F4F4"
     strokeLinecap="round"
     x1="21.8998"
     x2="20.2989"

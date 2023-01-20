@@ -1,12 +1,16 @@
 import { css } from '@emotion/react';
+import { rgba } from 'polished';
 
 export default css`
   --color-white: #ffffff;
   --color-black: #000000;
+  --erno-black: #1d252c;
+  --erno-yellow: #fdebb8;
 
   --system-text-primary-light: #293338;
   --system-text-secondary-light: #535e65;
   --system-text-secondary-inverted-light: #cdd3d5;
+  --system-text-muted-light: #6b757b;
   --system-background-app-light: #f3f4f4;
   --system-background-surface-1-light: #ffffff;
   --system-background-muted-light: #dcdede;
@@ -16,6 +20,7 @@ export default css`
   --system-text-primary-dark: #e9ecec;
   --system-text-secondary-dark: #d0d6d7;
   --system-text-secondary-inverted-dark: #d0d6d7;
+  --system-text-disabled-dark: #7b838a;
   --system-background-app-dark: #0d1212;
   --system-background-surface-1-dark: #182125;
   --system-background-hover-dark: #2a363c;
@@ -23,8 +28,15 @@ export default css`
   --system-background-selected-low-contrast-dark: #404b53;
   --system-background-floating-dark: #3a444b;
 
+  --nav-category: #1dcad3;
+  --nav-item: #afe2e3;
+  --nav-highlight: #0d374a;
+
   --interactive-link-light: #0c74df;
   --interactive-link-dark: #3d9dff;
+
+  --modal-wrapper-background-light: ${rgba('#d5d7d7', 0.75)};
+  --modal-wrapper-background-dark: ${rgba('#3a444b', 0.75)};
 
   --code-console-background-main: #182125;
   --code-console-text-highlight: #429fff;

@@ -13,6 +13,9 @@ import MDXCollapserGroup from './MDXCollapserGroup';
 import MDXLink from './MDXLink';
 import MDXTable from './MDXTable';
 import MDXVideo from './MDXVideo';
+import SideBySide from './SideBySide';
+import TutorialStep from './TutorialSteps/TutorialStep';
+import TutorialSection from './TutorialSteps/TutorialSection';
 
 const defaultComponents = {
   a: MDXLink,
@@ -26,6 +29,9 @@ const defaultComponents = {
   Icon,
   InlineCode,
   Link,
+  SideBySide,
+  Steps: TutorialSection,
+  Step: TutorialStep,
   table: MDXTable,
   Video: MDXVideo,
 };

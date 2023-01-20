@@ -1,14 +1,16 @@
 {
   "404": {
-    "statusCode": "404",
-    "errorMessage": "入力したURLは間違っているか、ページが削除された可能性があります。<2>ホームに戻る</2>"
+    "headingText": "見つかりませんでした",
+    "searchInputLabel": "検索を絞り込んでみてください",
+    "searchResultMessage": "お探しのものはありましたか？",
+    "docsHomeMessage": "<1>{{nrSubDomain}}ホーム</1>に戻ります。",
+    "fileIssueMessage": "お探しのものが見つからない場合"
   },
   "button": {
     "close": "閉じる",
     "copied": "コピー済み",
     "copy": "コピー",
     "login": "ログイン",
-    "signUp": "無料アカウント",
     "startNow": "今すぐ開始"
   },
   "callout": {
@@ -19,26 +21,29 @@
   },
   "github": {
     "createIssue": "問題を作成する",
-    "editPage": "このページを編集する"
+    "editPage": "GitHub上で編集"
   },
   "contributing": {
-    "guide": "当社の<1>ガイド</1>で貢献の仕方を確認してください"
+    "guide": "変更案を記載し、こちらから<1>貢献</1>方法について確認してください"
   },
   "cookieConsent": {
     "title": "本サイトはCookiesを使用しています",
-    "statement": "当社は、お客様の体験を向上し、関連性あるコンテンツを提供するため、WebサイトおよびサービスでCookiesおよびその他の類似の技術を用いています（「Cookies」）。当社のWebサイトおよびサービスを利用する場合、お客様がCookiesの利用に同意したものと見なします。詳しくは<2>こちら</2>からご覧下さい。当社のCookiesの使用に同意する場合は、<4>はい</4>をクリックしてください。",
+    "statement": "当社は、お客様の体験を向上し、関連性あるコンテンツを提供するため、Webサイトおよびサービスで(\"Cookies\")およびその他の類似の技術を用いています。当社のWebサイトおよびサービスを利用する場合、お客様がCookiesの利用に同意したものと見なします。詳しくは<2>こちら</2>からご覧下さい。当社のCookiesの使用に同意する場合は、<4>はい</4>をクリックしてください。",
     "agree": "はい",
     "disagree": "いいえ"
   },
   "feedback": {
-    "thanks": "フィードバックを頂きありがとうございました。",
-    "question": "このページは役に立ちましたか？",
-    "positive": "はい",
-    "negative": "いいえ",
-    "commentPlaceholder": "追加のフィードバック（任意）",
-    "validationError": "投票またはコメントをしてください",
+    "question": "本資料は役に立ちましたか?",
+    "yes": "はい",
+    "no": "いいえ",
+    "somewhat": "ある程度そう思う",
+    "comments": "詳しくお聞かせください（オプション)",
+    "email": "メールアドレス（オプション）",
+    "emailDisclaimer": "このメールアドレスは、あなたのフィードバックに対してフォローアップするための質問に関してのみ使用いたします.",
+    "validEmail": "有効なメールアドレスをご入力ください",
     "submitButton": "フィードバックを提出する",
-    "title": "フィードバック"
+    "submitMessage": "詳細なフィードバックありがとうございました",
+    "reset": "リセット"
   },
   "footer": {
     "copyright": "Copyright {{copyrightSymbol}} {{year}} New Relic Inc.",
@@ -46,11 +51,17 @@
     "terms": "サービス利用規約",
     "dcmaPolicy": "DCMAポリシー",
     "privacyNotice": "プライバシー通知",
-    "cookiePolicy": "Cookieポリシー",
+    "cookiePolicy": "Cookie ポリシー",
     "ukSlaveryAct": "英国現代奴隷法"
   },
+  "mobileNav": {
+    "header": "ページ"
+  },
+  "relatedResources": {
+    "title": "関連資料"
+  },
   "searchInput": {
-    "placeholder": "Docs.newrelic.com、Developer.newrelic.com、OpenSource.newrelic.comを検索"
+    "placeholder": "ドキュメントを検索"
   },
   "tableOfContents": {
     "title": "このページの目次"

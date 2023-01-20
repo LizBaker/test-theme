@@ -3,6 +3,7 @@ import React, { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/react';
 import { LiveError, LivePreview, LiveProvider } from 'react-live';
+import { saveAs } from 'file-saver';
 import Button from './Button';
 import CodeEditor from './CodeEditor';
 import Icon from './Icon';
@@ -48,6 +49,7 @@ const reducer = (state, action) => {
 
 const CodeBlock = ({
   autoFormat,
+  altStyle,
   children,
   className,
   components: componentOverrides = {},
@@ -60,6 +62,7 @@ const CodeBlock = ({
   live,
   preview,
   scope,
+  containerId,
 }) => {
   children = children.trim();
 
@@ -89,6 +92,19 @@ const CodeBlock = ({
     () => copy(containsEmbeddedHTML ? normalizedCode : code),
     {
       eventName: 'copyCodeBlockClick',
+      category: 'CodeBlock',
+      modified,
+    }
+  );
+
+  const handleDownloadClick = useInstrumentedHandler(
+    () => {
+      const fileExtension = fileName.split('.')[1];
+      const blob = new Blob([children], { type: fileExtension });
+      saveAs(blob, fileName);
+    },
+    {
+      eventName: 'downloadCodeBlockClick',
       category: 'CodeBlock',
       modified,
     }
@@ -132,7 +148,77 @@ const CodeBlock = ({
             }
           `}
         >
+          {altStyle && (
+            <div
+              css={css`
+                color: var(--color-comment);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: var(--color-background);
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                padding: 0 1rem;
+                font-size: 0.75rem;
+                height: 50px;
+              `}
+            >
+              <div
+                css={css`
+                  font-family: var(--code-font);
+                  white-space: nowrap;
+                  overflow: hidden;
+                  padding-right: 0.5rem;
+                `}
+              >
+                {fileName && (
+                  <MiddleEllipsis>
+                    <span title={fileName}>{fileName}</span>
+                  </MiddleEllipsis>
+                )}
+              </div>
+              <Button
+                type="button"
+                variant={Button.VARIANT.OUTLINE}
+                onClick={handleDownloadClick}
+                size={Button.SIZE.SMALL}
+                css={css`
+                  white-space: nowrap;
+                  color: var(--system-text-primary-dark);
+                  border-color: var(--system-text-primary-dark);
+                `}
+              >
+                <Icon
+                  name="fe-download"
+                  css={css`
+                    margin-right: 0.5rem;
+                  `}
+                />
+                Download
+              </Button>
+              <Button
+                type="button"
+                variant={Button.VARIANT.OUTLINE}
+                onClick={handleCopyClick}
+                size={Button.SIZE.SMALL}
+                css={css`
+                  white-space: nowrap;
+                  color: var(--system-text-primary-dark);
+                  border-color: var(--system-text-primary-dark);
+                `}
+              >
+                <Icon
+                  name="fe-copy"
+                  css={css`
+                    margin-right: 0.5rem;
+                  `}
+                />
+                {copied ? t('button.copied') : t('button.copy')}
+              </Button>
+            </div>
+          )}
           <div
+            id={containerId ?? 'codeblock'}
             css={css`
               max-height: 26em;
               overflow: auto;
@@ -157,7 +243,7 @@ const CodeBlock = ({
               </CodeHighlight>
             )}
           </div>
-          {(copyable || fileName) && (
+          {(copyable || fileName) && !altStyle && (
             <div
               css={css`
                 color: var(--color-comment);
@@ -225,6 +311,7 @@ const CodeBlock = ({
 };
 
 CodeBlock.propTypes = {
+  altStyle: PropTypes.bool,
   autoFormat: PropTypes.bool,
   fileName: PropTypes.string,
   children: PropTypes.string.isRequired,
@@ -240,6 +327,7 @@ CodeBlock.propTypes = {
   live: PropTypes.bool,
   preview: PropTypes.bool,
   scope: PropTypes.object,
+  containerId: PropTypes.string,
 };
 
 CodeBlock.defaultProps = {

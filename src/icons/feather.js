@@ -40,6 +40,13 @@ export default {
       <path d="M20 4v7a4 4 0 0 1-4 4H4" />
     </>
   ),
+  download: (
+    <>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </>
+  ),
   edit: (
     <>
       <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -61,6 +68,13 @@ export default {
     <>
       <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3" />
       <line x1="8" y1="12" x2="16" y2="12" />
+    </>
+  ),
+  info: (
+    <>
+      <circle cx="12" cy="12" r="10" stroke="#0095a9" />
+      <line x1="12" y1="16" x2="12" y2="12" stroke="#0095a9" />
+      <line x1="12" y1="8" x2="12.01" y2="8" stroke="#0095a9" />
     </>
   ),
   loader: (
