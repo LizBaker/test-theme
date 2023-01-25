@@ -6,7 +6,7 @@ const toQueryString = (queryParams) =>
 
 const useQueryParams = () => {
   return {
-    queryParams: {},
+    queryParams: new URLSearchParams(),
     setQueryParam: () => {},
     deleteQueryParam: () => {},
   };
