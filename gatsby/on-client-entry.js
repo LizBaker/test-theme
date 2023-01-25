@@ -10,7 +10,7 @@ const onClientEntry = (_, themeOptions) => {
     window.newrelic.setCustomAttribute('locale', locale);
   }
 
-  if (themeOptions.signup && themeOptions.tessen.segmentWriteKey) {
+  if (themeOptions.signup && themeOptions.tessen?.segmentWriteKey) {
     window._nr_signup = {
       environment: `${themeOptions.signup.environment}`,
       reCaptchaToken: `${themeOptions.signup.reCaptchaToken}`,
@@ -18,7 +18,7 @@ const onClientEntry = (_, themeOptions) => {
       segmentKey: `${themeOptions.tessen.segmentWriteKey}`,
     };
   }
-  if (themeOptions.feedback && themeOptions.tessen.segmentWriteKey) {
+  if (themeOptions.feedback && themeOptions.tessen?.segmentWriteKey) {
     window._nr_feedback = {
       environment: `${themeOptions.feedback.environment}`,
       reCaptchaToken: `${themeOptions.feedback.reCaptchaToken}`,
