@@ -5,6 +5,7 @@ const toQueryString = (queryParams) =>
   Array.from(queryParams.keys()).length ? `?${queryParams}` : '';
 
 const useQueryParams = () => {
+  return {};
   const location = useLocation();
 
   const queryParams = useMemo(
