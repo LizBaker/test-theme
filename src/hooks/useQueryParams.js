@@ -5,7 +5,11 @@ const toQueryString = (queryParams) =>
   Array.from(queryParams.keys()).length ? `?${queryParams}` : '';
 
 const useQueryParams = () => {
-  return {};
+  return {
+    queryParams: () => {},
+    setQueryParam: () => {},
+    deleteQueryParam: () => {},
+  };
   const location = useLocation();
 
   const queryParams = useMemo(
